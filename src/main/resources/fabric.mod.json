@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "growthcraft",
+  "version": "${version}",
+
+  "name": "Growthcraft Community Edition",
+  "description": "This is an example description! Tell everyone what your mod is about!",
+  "authors": [
+    "Falkory220"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/growthcraft-community-edition",
+    "sources": "https://github.com/GrowthcraftCE/Growthcraft-1.17-Fabric"
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/modid/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.growthcraft.Growthcraft"
+    ]
+  },
+  "mixins": [
+    "modid.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.17.x",
+    "java": ">=16"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
