@@ -1,0 +1,14 @@
+
+{
+  "variants": {
+    "type=top": {
+      "model": "growthcraft:block/cheddar_top"
+    },
+    "type=bottom": {
+      "model": "growthcraft:block/cheddar_bottom"
+    },
+    "type=double": {
+      "model": "growthcraft:block/cheddar_double"
+    }
+  }
+}
