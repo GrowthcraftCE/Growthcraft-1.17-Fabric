@@ -2,14 +2,21 @@ package net.growthcraft;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
+import net.fabricmc.fabric.mixin.object.builder.ModelPredicateProviderRegistryAccessor;
+import net.growthcraft.blocks.CheeseBlock;
 import net.growthcraft.blocks.GrowthcraftBlocks;
 import net.growthcraft.items.GrowthcraftItems;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.collection.DefaultedList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.List;
 
 public class Growthcraft implements ModInitializer {
 	// This logger is used to write text to the console and the log file.
@@ -18,16 +25,27 @@ public class Growthcraft implements ModInitializer {
 	public static final Logger GROWTHCRAFT = LogManager.getLogger("growthcraft");
 	public static final String MOD_ID = "growthcraft";
 
-	public static ItemGroup ITEMGROUP = FabricItemGroupBuilder.build(
-			new Identifier(MOD_ID, "item_group"),
-			() -> new ItemStack(Blocks.COAL_BLOCK));
-
-
+	public static ItemGroup ITEMGROUP = FabricItemGroupBuilder.create(new Identifier(MOD_ID, "item_group"))
+			.appendItems(Growthcraft::getNBTItems).icon(() -> new ItemStack(GrowthcraftBlocks.CHEDDAR)).build();
+	
+	public static List<ItemStack> getNBTItems(List<ItemStack> stacks){
+		for (CheeseBlock.CheeseState state : CheeseBlock.CheeseState.values()) {
+			ItemStack stack = new ItemStack(GrowthcraftBlocks.CHEDDAR.asItem());
+			stack.getOrCreateNbt().putInt("cheese_state",state.ordinal());
+			stacks.add(stack);
+		}
+		return stacks;
+	}
+	
 	@Override
 	public void onInitialize() {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
+		FabricModelPredicateProviderRegistry.register(GrowthcraftBlocks.CHEDDAR.asItem(), new Identifier("cheese_state"), (itemStack, world, livingEntity, i) -> {
+			return CheeseBlock.CheeseState.fromStackRaw(itemStack);
+		});
+		
 		GrowthcraftItems.register();
 		GrowthcraftBlocks.register();
 		GROWTHCRAFT.info("Hello Fabric world!");

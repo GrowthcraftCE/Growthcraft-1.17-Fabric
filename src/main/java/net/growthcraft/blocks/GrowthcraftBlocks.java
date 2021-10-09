@@ -16,10 +16,8 @@ import static net.growthcraft.Growthcraft.MOD_ID;
 
 public class GrowthcraftBlocks {
 
-    //Chese
+    //Cheese
     public static final Block CHEDDAR = registerBlock("cheddar", new CheeseBlock(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL)).waxedBy(DyeColor.RED));
-    public static final Block WAXED_CHEDDAR = registerBlock("waxed_cheddar", new CheeseBlock(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL)));
-    public static final Block AGED_CHEDDAR = registerBlock("aged_cheddar", new CheeseBlock(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL)));
 
     public static Block registerBlock(String id, Block block) {
         SimpleRegistry.register(Registry.ITEM, new Identifier(MOD_ID,id), new BlockItem(block, new Item.Settings().group(Growthcraft.ITEMGROUP)));
