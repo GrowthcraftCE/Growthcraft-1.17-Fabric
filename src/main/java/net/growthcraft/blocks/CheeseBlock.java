@@ -1,5 +1,6 @@
 package net.growthcraft.blocks;
 
+import net.growthcraft.entity.CheeseBlockEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.block.entity.BlockEntity;
@@ -25,6 +26,6 @@ public class CheeseBlock extends SlabBlockWithEntity {
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return null;
+        return new CheeseBlockEntity(pos, state);
     }
 }

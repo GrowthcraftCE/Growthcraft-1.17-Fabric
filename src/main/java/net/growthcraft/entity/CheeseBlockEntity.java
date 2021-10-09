@@ -7,6 +7,6 @@ import net.minecraft.util.math.BlockPos;
 
 public class CheeseBlockEntity extends BlockEntity {
     public CheeseBlockEntity(BlockPos pos, BlockState state) {
-        super(pos, state);
+        super(GrowthcraftBlockEntities.CHEESE_BLOCK_ENTITY, pos, state);
     }
 }
