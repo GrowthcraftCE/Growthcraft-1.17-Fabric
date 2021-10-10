@@ -50,6 +50,6 @@ public class Growthcraft implements ModInitializer {
 		
 		GrowthcraftItems.register();
 		GrowthcraftBlocks.register();
-		GROWTHCRAFT.info("Hello Fabric world!");
+		GROWTHCRAFT.info("Including Cheese™");
 	}
 }

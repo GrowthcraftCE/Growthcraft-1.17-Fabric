@@ -27,6 +27,25 @@
     },
     "cheese_state_bottom=aged,cheese_state_top=aged": {
       "model": "growthcraft:block/waxed_cheddar_double"
+    },
+
+    "cheese_state_bottom=aged,cheese_state_top=unaged": {
+      "model": "growthcraft:block/cheddar_aged_unaged"
+    },
+    "cheese_state_bottom=unaged,cheese_state_top=aged": {
+      "model": "growthcraft:block/cheddar_unaged_aged"
+    },
+    "cheese_state_bottom=unaged,cheese_state_top=waxed": {
+      "model": "growthcraft:block/cheddar_unaged_waxed"
+    },
+    "cheese_state_bottom=waxed,cheese_state_top=unaged": {
+      "model": "growthcraft:block/cheddar_waxed_unaged"
+    },
+    "cheese_state_bottom=waxed,cheese_state_top=aged": {
+      "model": "growthcraft:block/cheddar_waxed_aged"
+    },
+    "cheese_state_bottom=aged,cheese_state_top=waxed": {
+      "model": "growthcraft:block/cheddar_aged_waxed"
     }
   }
 }
