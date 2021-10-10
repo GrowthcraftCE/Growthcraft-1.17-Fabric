@@ -25,7 +25,9 @@ public class Growthcraft implements ModInitializer {
 	public static final Logger GROWTHCRAFT = LogManager.getLogger("growthcraft");
 	public static final String MOD_ID = "growthcraft";
 
-	public static ItemGroup ITEMGROUP = FabricItemGroupBuilder.create(new Identifier(MOD_ID, "item_group"))
+	public static ItemGroup ITEMGROUP = FabricItemGroupBuilder.build(new Identifier(MOD_ID, "item_group"),
+			() -> new ItemStack(GrowthcraftItems.RED_WAX));
+	public static ItemGroup CHEESES = FabricItemGroupBuilder.create(new Identifier(MOD_ID, "cheeses"))
 			.appendItems(Growthcraft::getNBTItems).icon(() -> new ItemStack(GrowthcraftBlocks.CHEDDAR)).build();
 	
 	public static List<ItemStack> getNBTItems(List<ItemStack> stacks){

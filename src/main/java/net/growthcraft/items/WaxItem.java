@@ -4,6 +4,7 @@ import net.growthcraft.blocks.CheeseBlock;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.enums.SlabType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.HoneycombItem;
 import net.minecraft.item.ItemStack;
@@ -17,6 +18,9 @@ import net.minecraft.world.WorldEvents;
 
 import java.nio.channels.FileChannel;
 
+import static net.growthcraft.blocks.CheeseBlock.CHEESE_STATE_BOTTOM;
+import static net.growthcraft.blocks.CheeseBlock.CHEESE_STATE_TOP;
+
 public class WaxItem extends HoneycombItem {
     public DyeColor wax;
     public WaxItem(Settings settings) {
@@ -25,21 +29,32 @@ public class WaxItem extends HoneycombItem {
 
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
+        super.useOnBlock(context);
         World world = context.getWorld();
         BlockPos blockPos = context.getBlockPos();
         BlockState state = world.getBlockState(blockPos);
-        PlayerEntity playerEntity = context.getPlayer();
         ItemStack itemStack = context.getStack();
-
-        if (playerEntity instanceof ServerPlayerEntity) {
-            Criteria.ITEM_USED_ON_BLOCK.trigger((ServerPlayerEntity)playerEntity, blockPos, itemStack);
+        
+        if (!world.isClient) if (state.getBlock() instanceof CheeseBlock) if (((CheeseBlock)state.getBlock()).wax == this.wax) {
+            CheeseBlock.CheeseState cheeseStateBottom = state.get(CHEESE_STATE_BOTTOM);
+            CheeseBlock.CheeseState cheeseStateTop = state.get(CHEESE_STATE_TOP);
+            
+            if (cheeseStateBottom == CheeseBlock.CheeseState.UNAGED){
+                waxCheese(world,blockPos,state,SlabType.BOTTOM);
+            }
+            if (cheeseStateTop == CheeseBlock.CheeseState.UNAGED){
+                waxCheese(world,blockPos,state,SlabType.TOP);
+            }
         }
-
+        
         itemStack.decrement(1);
-        world.syncWorldEvent(playerEntity, WorldEvents.BLOCK_WAXED, blockPos, 0);
         return ActionResult.success(world.isClient);
     }
-
+    
+    private void waxCheese(World world, BlockPos pos, BlockState preWaxedState, SlabType slabType) {
+        world.setBlockState(pos,preWaxedState.with(slabType == SlabType.BOTTOM ? CHEESE_STATE_BOTTOM : CHEESE_STATE_TOP, CheeseBlock.CheeseState.WAXED));
+    }
+    
     public WaxItem color(DyeColor color){
         this.wax = color;
         return this;
