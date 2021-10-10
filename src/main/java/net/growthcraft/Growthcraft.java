@@ -25,14 +25,18 @@ public class Growthcraft implements ModInitializer {
 	public static final Logger GROWTHCRAFT = LogManager.getLogger("growthcraft");
 	public static final String MOD_ID = "growthcraft";
 
-	public static ItemGroup ITEMGROUP = FabricItemGroupBuilder.create(new Identifier(MOD_ID, "item_group"))
+	public static ItemGroup ITEMGROUP = FabricItemGroupBuilder.build(new Identifier(MOD_ID, "item_group"),
+			() -> new ItemStack(GrowthcraftItems.RED_WAX));
+	public static ItemGroup CHEESES = FabricItemGroupBuilder.create(new Identifier(MOD_ID, "cheeses"))
 			.appendItems(Growthcraft::getNBTItems).icon(() -> new ItemStack(GrowthcraftBlocks.CHEDDAR)).build();
 	
 	public static List<ItemStack> getNBTItems(List<ItemStack> stacks){
 		for (CheeseBlock.CheeseState state : CheeseBlock.CheeseState.values()) {
-			ItemStack stack = new ItemStack(GrowthcraftBlocks.CHEDDAR.asItem());
-			stack.getOrCreateNbt().putInt("cheese_state",state.ordinal());
-			stacks.add(stack);
+			if (state != CheeseBlock.CheeseState.NONE && state != CheeseBlock.CheeseState.SLICED_QH && state != CheeseBlock.CheeseState.SLICED_H && state != CheeseBlock.CheeseState.SLICED_Q){
+				ItemStack stack = new ItemStack(GrowthcraftBlocks.CHEDDAR.asItem());
+				stack.getOrCreateNbt().putInt("cheese_state",(state.ordinal()-1));
+				stacks.add(stack);
+			}
 		}
 		return stacks;
 	}
@@ -48,6 +52,6 @@ public class Growthcraft implements ModInitializer {
 		
 		GrowthcraftItems.register();
 		GrowthcraftBlocks.register();
-		GROWTHCRAFT.info("Hello Fabric world!");
+		GROWTHCRAFT.info("Including Cheese™");
 	}
 }
