@@ -1,51 +1,22 @@
-
 {
-  "variants": {
-    "cheese_state_bottom=none,cheese_state_top=unaged": {
-      "model": "growthcraft:block/cheddar_top"
+  "multipart": [
+    {   "when": { "cheese_state_top": "unaged" },
+      "apply": { "model": "growthcraft:block/cheddar_top" }
     },
-    "cheese_state_bottom=unaged,cheese_state_top=none": {
-      "model": "growthcraft:block/cheddar_bottom"
+    {   "when": { "cheese_state_bottom": "unaged" },
+      "apply": { "model": "growthcraft:block/cheddar_bottom" }
     },
-    "cheese_state_bottom=unaged,cheese_state_top=unaged": {
-      "model": "growthcraft:block/cheddar_double"
+    {   "when": { "cheese_state_top": "waxed" },
+      "apply": { "model": "growthcraft:block/waxed_cheddar_top" }
     },
-    "cheese_state_bottom=none,cheese_state_top=waxed": {
-      "model": "growthcraft:block/waxed_cheddar_top"
+    {   "when": { "cheese_state_bottom": "waxed" },
+      "apply": { "model": "growthcraft:block/waxed_cheddar_bottom" }
     },
-    "cheese_state_bottom=waxed,cheese_state_top=none": {
-      "model": "growthcraft:block/waxed_cheddar_bottom"
+    {   "when": { "cheese_state_top": "aged" },
+      "apply": { "model": "growthcraft:block/waxed_cheddar_top" }
     },
-    "cheese_state_bottom=waxed,cheese_state_top=waxed": {
-      "model": "growthcraft:block/waxed_cheddar_double"
-    },
-    "cheese_state_bottom=none,cheese_state_top=aged": {
-      "model": "growthcraft:block/waxed_cheddar_top"
-    },
-    "cheese_state_bottom=aged,cheese_state_top=none": {
-      "model": "growthcraft:block/waxed_cheddar_bottom"
-    },
-    "cheese_state_bottom=aged,cheese_state_top=aged": {
-      "model": "growthcraft:block/waxed_cheddar_double"
-    },
-
-    "cheese_state_bottom=aged,cheese_state_top=unaged": {
-      "model": "growthcraft:block/cheddar_aged_unaged"
-    },
-    "cheese_state_bottom=unaged,cheese_state_top=aged": {
-      "model": "growthcraft:block/cheddar_unaged_aged"
-    },
-    "cheese_state_bottom=unaged,cheese_state_top=waxed": {
-      "model": "growthcraft:block/cheddar_unaged_waxed"
-    },
-    "cheese_state_bottom=waxed,cheese_state_top=unaged": {
-      "model": "growthcraft:block/cheddar_waxed_unaged"
-    },
-    "cheese_state_bottom=waxed,cheese_state_top=aged": {
-      "model": "growthcraft:block/cheddar_waxed_aged"
-    },
-    "cheese_state_bottom=aged,cheese_state_top=waxed": {
-      "model": "growthcraft:block/cheddar_aged_waxed"
+    {   "when": { "cheese_state_bottom": "aged" },
+      "apply": { "model": "growthcraft:block/waxed_cheddar_bottom" }
     }
-  }
+  ]
 }
