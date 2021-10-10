@@ -1,8 +1,11 @@
 package net.growthcraft.blocks;
 
 import net.growthcraft.entity.CheeseBlockEntity;
+import net.growthcraft.entity.GrowthcraftBlockEntities;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
@@ -17,6 +20,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Locale;
@@ -69,6 +73,12 @@ public class CheeseBlock extends BlockWithEntity {
 			Direction direction = ctx.getSide();
 			return direction != Direction.DOWN && (direction == Direction.UP || !(ctx.getHitPos().y - (double)blockPos.getY() > 0.5D)) ? (BlockState)blockStateBottom : (BlockState)blockStateTop;
 		}
+	}
+	
+	@Nullable
+	@Override
+	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+		return checkType(type, GrowthcraftBlockEntities.CHEESE_BLOCK_ENTITY, CheeseBlockEntity::tick);
 	}
 	
 	public CheeseState getPlacementCheeseState(ItemPlacementContext ctx){
