@@ -33,7 +33,7 @@ public class CheeseBlock extends BlockWithEntity {
 	protected static final VoxelShape TOP_SHAPE;
 	
 	public CheeseBlock(Settings settings) {
-		super(settings);
+		super(settings.nonOpaque());
 		this.setDefaultState(this.getDefaultState().with(CHEESE_STATE_TOP,CheeseState.NONE).with(CHEESE_STATE_BOTTOM,CheeseState.NONE));
 	}
 	
@@ -138,7 +138,7 @@ public class CheeseBlock extends BlockWithEntity {
 		UNAGED,
 		WAXED,
 		AGED,
-		SLICED_QH,
+		SLICED_HQ,
 		SLICED_H,
 		SLICED_Q;
 		
