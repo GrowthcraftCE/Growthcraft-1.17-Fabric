@@ -18,7 +18,6 @@
     {   "when": { "cheese_state_bottom": "aged" },
       "apply": { "model": "growthcraft:block/waxed_cheddar_bottom" }
     },
-
     {   "when": { "cheese_state_top": "sliced_hq" },
       "apply": { "model": "growthcraft:block/sliced_hq_cheddar_top" }
     },
