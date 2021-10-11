@@ -12,7 +12,8 @@ import static net.growthcraft.Growthcraft.MOD_ID;
 
 public class GrowthcraftItems {
     public static final Item RED_WAX = registerItem(new WaxItem(new Item.Settings().group(Growthcraft.ITEMGROUP)).color(DyeColor.RED), "red_wax");
-
+    public static final Item CUTTING_KNIFE = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP)), "cutting_knife");
+    
     public static void register(){}
 
     public static Item registerItem(Item item,String id) {
