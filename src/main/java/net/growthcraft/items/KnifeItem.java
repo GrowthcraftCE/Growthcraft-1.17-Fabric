@@ -35,8 +35,9 @@ public class KnifeItem extends SwordItem {
 			
 			int readyToCut = CheeseBlock.CheeseState.AGED.ordinal();
 			if ((cheeseStateBottom.ordinal() >= CheeseBlock.CheeseState.values().length || cheeseStateBottom == CheeseBlock.CheeseState.NONE)
-							&& (cheeseStateTop.ordinal() >= CheeseBlock.CheeseState.values().length || cheeseStateBottom == CheeseBlock.CheeseState.NONE))
+							&& (cheeseStateTop.ordinal() >= CheeseBlock.CheeseState.values().length || cheeseStateTop == CheeseBlock.CheeseState.NONE))
 				world.setBlockState(blockPos, Blocks.AIR.getDefaultState());
+			
 			if (cheeseStateBottom.ordinal() >= readyToCut){
 				cutCheese(world,blockPos,state, SlabType.BOTTOM, player,cheeseStateBottom.ordinal()+1);
 			}
