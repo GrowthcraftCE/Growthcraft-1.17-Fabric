@@ -34,11 +34,14 @@ public class KnifeItem extends SwordItem {
 			CheeseBlock.CheeseState cheeseStateTop = state.get(CHEESE_STATE_TOP);
 			
 			int readyToCut = CheeseBlock.CheeseState.AGED.ordinal();
+			if ((cheeseStateBottom.ordinal() >= CheeseBlock.CheeseState.values().length || cheeseStateBottom == CheeseBlock.CheeseState.NONE)
+							&& (cheeseStateTop.ordinal() >= CheeseBlock.CheeseState.values().length || cheeseStateBottom == CheeseBlock.CheeseState.NONE))
+				world.setBlockState(blockPos, Blocks.AIR.getDefaultState());
 			if (cheeseStateBottom.ordinal() >= readyToCut){
 				cutCheese(world,blockPos,state, SlabType.BOTTOM, player,cheeseStateBottom.ordinal()+1);
 			}
-			if (cheeseStateTop.ordinal() >= readyToCut){
-				cutCheese(world,blockPos,state,SlabType.TOP, player,cheeseStateBottom.ordinal()+1);
+			else if (cheeseStateTop.ordinal() >= readyToCut){
+				cutCheese(world,blockPos,state,SlabType.TOP, player,cheeseStateTop.ordinal()+1);
 			}
 		}
 		
@@ -47,8 +50,7 @@ public class KnifeItem extends SwordItem {
 	}
 	
 	private void cutCheese(World world, BlockPos blockPos, BlockState preWaxedState, SlabType slabType, PlayerEntity entity, int nextCutState) {
-		if (nextCutState >= CheeseBlock.CheeseState.values().length) world.setBlockState(blockPos, Blocks.AIR.getDefaultState()); else
-		world.setBlockState(blockPos,preWaxedState.with(slabType == SlabType.BOTTOM ? CHEESE_STATE_BOTTOM : CHEESE_STATE_TOP, CheeseBlock.CheeseState.values()[nextCutState]));
+		world.setBlockState(blockPos,preWaxedState.with(slabType == SlabType.BOTTOM ? CHEESE_STATE_BOTTOM : CHEESE_STATE_TOP, nextCutState >= CheeseBlock.CheeseState.values().length ? CheeseBlock.CheeseState.NONE : CheeseBlock.CheeseState.values()[nextCutState]));
 		entity.giveItemStack(new ItemStack(GrowthcraftItems.CHEDDAR_SLICE,4));
 	}
 }
