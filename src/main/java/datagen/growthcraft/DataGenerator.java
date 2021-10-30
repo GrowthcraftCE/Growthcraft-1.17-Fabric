@@ -40,7 +40,7 @@ public class DataGenerator {
 		
 		JsonParser jsonParser = new JsonParser();
 		
-		Arrays.stream(GrowthcraftBlocks.class.getDeclaredFields()).forEach(field -> {
+		Arrays.stream(GrowthcraftBlocks.Cheeses.class.getDeclaredFields()).forEach(field -> {
 			String cheeseName = field.getName().toLowerCase(Locale.ROOT);
 			try {
 				modelStates.addState((Block) field.get(null), () -> jsonParser.parse("{\n" +

@@ -33,7 +33,7 @@ public class Growthcraft implements ModInitializer {
 	public static ItemGroup ITEMGROUP = FabricItemGroupBuilder.build(new Identifier(MOD_ID, "item_group"),
 			() -> new ItemStack(GrowthcraftItems.RED_WAX));
 	public static ItemGroup CHEESES = FabricItemGroupBuilder.create(new Identifier(MOD_ID, "cheeses"))
-			.appendItems(Growthcraft::getNBTItems).icon(() -> new ItemStack(GrowthcraftBlocks.CHEDDAR)).build();
+			.appendItems(Growthcraft::getNBTItems).icon(() -> new ItemStack(GrowthcraftBlocks.Cheeses.CHEDDAR)).build();
 	
 	public static List<ItemStack> getNBTItems(List<ItemStack> stacks){
 		for (CheeseBlock.CheeseState state : CheeseBlock.CheeseState.values()) {
@@ -60,7 +60,7 @@ public class Growthcraft implements ModInitializer {
 		
 		new DataGenerator().generate();
 		
-		FabricModelPredicateProviderRegistry.register(GrowthcraftBlocks.CHEDDAR.asItem(), new Identifier("cheese_state"), (itemStack, world, livingEntity, i) -> {
+		FabricModelPredicateProviderRegistry.register(GrowthcraftBlocks.Cheeses.CHEDDAR.asItem(), new Identifier("cheese_state"), (itemStack, world, livingEntity, i) -> {
 			return CheeseBlock.CheeseState.fromStackRaw(itemStack);
 		});
 		
