@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "growthcraft:block/unaged_gorgonzola_bottom",
+    "top": "growthcraft:block/unaged_gorgonzola_top",
+    "side": "growthcraft:block/unaged_gorgonzola_slab_side"
+  }
+}

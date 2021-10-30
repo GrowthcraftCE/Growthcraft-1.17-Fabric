@@ -16,18 +16,21 @@ import static net.growthcraft.Growthcraft.MOD_ID;
 
 public class GrowthcraftBlocks {
 
-    //Cheese
-    public static final Block CHEDDAR = registerBlock("cheddar", new CheeseBlock(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL)).waxedBy(DyeColor.RED));
-    public static final Block GORGONZOLA = registerBlock("gorgonzola", new CheeseBlock(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL)));
+    public static class Cheeses{
+        public static final Block CHEDDAR = registerBlock("cheddar", new CheeseBlock(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL)).waxedBy(DyeColor.RED));
+        public static final Block GORGONZOLA = registerBlock("gorgonzola", new CheeseBlock(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL)));
+    }
 
     public static Block registerBlock(String id, Block block) {
-        SimpleRegistry.register(Registry.ITEM, new Identifier(MOD_ID,id), new BlockItem(block, new Item.Settings().group(Growthcraft.ITEMGROUP)));
-        return SimpleRegistry.register(Registry.BLOCK, new Identifier(MOD_ID,id), block);
+        return registerBlock(id,block,true);
     }
 
     public static Block registerBlock(String id, Block block, boolean hasItem) {
-        if (hasItem)
-            SimpleRegistry.register(Registry.ITEM, new Identifier(MOD_ID,id), new BlockItem(block, new Item.Settings().group(Growthcraft.ITEMGROUP)));
+        if (hasItem) {
+            Item item = new BlockItem(block, new Item.Settings().group(Growthcraft.ITEMGROUP));
+            SimpleRegistry.register(Registry.ITEM, new Identifier(MOD_ID, id), item);
+            Growthcraft.CREATIVE_TAB_ITEMS.add(item);
+        }
         return SimpleRegistry.register(Registry.BLOCK, new Identifier(MOD_ID,id), block);
     }
 
