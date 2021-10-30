@@ -1,0 +1,50 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "growthcraft:item/unaged_gorgonzola"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "cheese_state": -1
+      },
+      "model": "growthcraft:item/unaged_gorgonzola"
+    },
+    {
+      "predicate": {
+        "cheese_state": 0
+      },
+      "model": "growthcraft:item/unaged_gorgonzola"
+    },
+    {
+      "predicate": {
+        "cheese_state": 1
+      },
+      "model": "growthcraft:item/waxed_gorgonzola"
+    },
+    {
+      "predicate": {
+        "cheese_state": 2
+      },
+      "model": "growthcraft:item/waxed_gorgonzola"
+    },
+    {
+      "predicate": {
+        "cheese_state": 3
+      },
+      "model": "growthcraft:item/sliced_gorgonzola"
+    },
+    {
+      "predicate": {
+        "cheese_state": 4
+      },
+      "model": "growthcraft:item/sliced_gorgonzola"
+    },
+    {
+      "predicate": {
+        "cheese_state": 5
+      },
+      "model": "growthcraft:item/sliced_gorgonzola"
+    }
+  ]
+}

@@ -87,6 +87,45 @@ public class DataGenerator {
 				e.printStackTrace();
 			}
 			for (CheeseBlock.CheeseState np_state : CheeseBlock.CheeseState.values()) {
+				modelStates.addModel(new Identifier(Growthcraft.MOD_ID, "item/" + "unaged_"+cheeseName),()-> jsonParser.parse("{\n" +
+						"  \"parent\": \"item/generated\",\n" +
+						"  \"textures\": {\n" +
+						"    \"layer0\": \"growthcraft:item/unaged_"+cheeseName+"\"\n" +
+						"  }\n" +
+						"}"));
+				modelStates.addModel(new Identifier(Growthcraft.MOD_ID, "item/" + "waxed_"+cheeseName),()-> jsonParser.parse("{\n" +
+						"  \"parent\": \"item/generated\",\n" +
+						"  \"textures\": {\n" +
+						"    \"layer0\": \"growthcraft:item/waxed_"+cheeseName+"\"\n" +
+						"  }\n" +
+						"}"));
+				modelStates.addModel(new Identifier(Growthcraft.MOD_ID, "item/" + "aged_"+cheeseName),()-> jsonParser.parse("{\n" +
+						"  \"parent\": \"item/generated\",\n" +
+						"  \"textures\": {\n" +
+						"    \"layer0\": \"growthcraft:item/aged_"+cheeseName+"\"\n" +
+						"  }\n" +
+						"}"));
+				modelStates.addModel(new Identifier(Growthcraft.MOD_ID, "item/" + "sliced_"+cheeseName),()-> jsonParser.parse("{\n" +
+						"\t\"parent\": \"item/generated\",\n" +
+						"\t\"textures\": {\n" +
+						"\t\t\"layer0\": \"growthcraft:item/sliced_"+cheeseName+"\"\n" +
+						"\t}\n" +
+						"}"));
+				modelStates.addModel(new Identifier(Growthcraft.MOD_ID, "item/" + cheeseName),()-> jsonParser.parse("{\n" +
+						"  \"parent\": \"item/generated\",\n" +
+						"  \"textures\": {\n" +
+						"    \"layer0\": \"growthcraft:item/unaged_"+cheeseName+"\"\n" +
+						"  },\n" +
+						"  \"overrides\": [\n" +
+						"    { \"predicate\": { \"cheese_state\": -1 }, \"model\": \"growthcraft:item/unaged_"+cheeseName+"\" },\n" +
+						"    { \"predicate\": { \"cheese_state\": 0 }, \"model\": \"growthcraft:item/unaged_"+cheeseName+"\" },\n" +
+						"    { \"predicate\": { \"cheese_state\": 1 }, \"model\": \"growthcraft:item/waxed_"+cheeseName+"\" },\n" +
+						"    { \"predicate\": { \"cheese_state\": 2 }, \"model\": \"growthcraft:item/waxed_"+cheeseName+"\" },\n" +
+						"    { \"predicate\": { \"cheese_state\": 3 }, \"model\": \"growthcraft:item/sliced_"+cheeseName+"\" },\n" +
+						"    { \"predicate\": { \"cheese_state\": 4 }, \"model\": \"growthcraft:item/sliced_"+cheeseName+"\" },\n" +
+						"    { \"predicate\": { \"cheese_state\": 5 }, \"model\": \"growthcraft:item/sliced_"+cheeseName+"\" }\n" +
+						"  ]\n" +
+						"}"));
 				for (SlabType type : SlabType.values()) {
 					String state = np_state.asString().toLowerCase(Locale.ROOT);
 					modelStates.addModel(new Identifier(Growthcraft.MOD_ID, "block/" + state + "_" + cheeseName + "_" + type.toString().toLowerCase(Locale.ROOT)), () -> jsonParser.parse(
