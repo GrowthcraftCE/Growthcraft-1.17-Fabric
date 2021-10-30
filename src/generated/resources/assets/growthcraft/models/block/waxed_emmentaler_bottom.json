@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "growthcraft:block/waxed_emmentaler_bottom",
+    "top": "growthcraft:block/waxed_emmentaler_top",
+    "side": "growthcraft:block/waxed_emmentaler_slab_side"
+  }
+}

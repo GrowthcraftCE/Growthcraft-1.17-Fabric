@@ -22,8 +22,10 @@ public class GrowthcraftItems {
     public static final Item CUTTING_KNIFE = registerItem(new KnifeItem(new Item.Settings().group(Growthcraft.ITEMGROUP)), "cutting_knife");
     public static final Item CHEDDAR_SLICE  = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP).food(new FoodComponent.Builder().hunger(6).saturationModifier(2).build())), "cheddar_slice");
     public static final Item GORGONZOLA_SLICE  = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP).food(new FoodComponent.Builder().hunger(6).saturationModifier(2).build())), "gorgonzola_slice");
-    public static final List<Item> CREATIVE_TAB_ITEMS = new ArrayList<>();
-    
+    public static final Item EMMENTALER_SLICE  = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP).food(new FoodComponent.Builder().hunger(6).saturationModifier(2).build())), "emmentaler_slice");
+    public static final Item MONTEREY_SLICE  = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP).food(new FoodComponent.Builder().hunger(6).saturationModifier(2).build())), "monterey_slice");
+
+
     public static void register(){}
 
     public static Item registerItem(Item item,String id) {

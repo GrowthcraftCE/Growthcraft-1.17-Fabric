@@ -19,6 +19,8 @@ public class GrowthcraftBlocks {
     public static class Cheeses{
         public static final Block CHEDDAR = registerBlock("cheddar", new CheeseBlock(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL)).waxedBy(DyeColor.RED));
         public static final Block GORGONZOLA = registerBlock("gorgonzola", new CheeseBlock(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL)));
+        public static final Block EMMENTALER = registerBlock("emmentaler", new CheeseBlock(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL)));
+        public static final Block MONTEREY = registerBlock("monterey", new CheeseBlock(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL)).waxedBy(DyeColor.BLACK));
     }
 
     public static Block registerBlock(String id, Block block) {

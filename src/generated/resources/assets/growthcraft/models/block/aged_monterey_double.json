@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "bottom": "growthcraft:block/aged_monterey_bottom",
+    "top": "growthcraft:block/aged_monterey_top",
+    "side": "growthcraft:block/aged_monterey_slab_side"
+  }
+}
