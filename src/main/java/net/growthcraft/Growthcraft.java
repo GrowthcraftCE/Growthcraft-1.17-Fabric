@@ -63,6 +63,9 @@ public class Growthcraft implements ModInitializer {
 		FabricModelPredicateProviderRegistry.register(GrowthcraftBlocks.Cheeses.CHEDDAR.asItem(), new Identifier("cheese_state"), (itemStack, world, livingEntity, i) -> {
 			return CheeseBlock.CheeseState.fromStackRaw(itemStack);
 		});
+		FabricModelPredicateProviderRegistry.register(GrowthcraftBlocks.Cheeses.GORGONZOLA.asItem(), new Identifier("cheese_state"), (itemStack, world, livingEntity, i) -> {
+			return CheeseBlock.CheeseState.fromStackRaw(itemStack);
+		});
 		
 		GROWTHCRAFT.info("Including Cheese™");
 	}
