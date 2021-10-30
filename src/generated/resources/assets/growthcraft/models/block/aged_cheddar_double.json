@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "bottom": "growthcraft:block/aged_cheddar_bottom",
+    "top": "growthcraft:block/aged_cheddar_top",
+    "side": "growthcraft:block/aged_cheddar_slab_side"
+  }
+}

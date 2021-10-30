@@ -1,5 +1,6 @@
 package net.growthcraft;
 
+import datagen.growthcraft.DataGenerator;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
@@ -9,6 +10,7 @@ import net.growthcraft.blocks.GrowthcraftBlocks;
 import net.growthcraft.items.GrowthcraftItems;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
@@ -16,6 +18,7 @@ import net.minecraft.util.collection.DefaultedList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Growthcraft implements ModInitializer {
@@ -24,6 +27,8 @@ public class Growthcraft implements ModInitializer {
 	// That way, it's clear which mod wrote info, warnings, and errors.
 	public static final Logger GROWTHCRAFT = LogManager.getLogger("growthcraft");
 	public static final String MOD_ID = "growthcraft";
+	
+	public static List<Item> CREATIVE_TAB_ITEMS = new ArrayList<>();
 
 	public static ItemGroup ITEMGROUP = FabricItemGroupBuilder.build(new Identifier(MOD_ID, "item_group"),
 			() -> new ItemStack(GrowthcraftItems.RED_WAX));
@@ -33,7 +38,7 @@ public class Growthcraft implements ModInitializer {
 	public static List<ItemStack> getNBTItems(List<ItemStack> stacks){
 		for (CheeseBlock.CheeseState state : CheeseBlock.CheeseState.values()) {
 			if (state != CheeseBlock.CheeseState.NONE){
-				GrowthcraftItems.CREATIVE_TAB_ITEMS.forEach(item -> {
+				CREATIVE_TAB_ITEMS.forEach(item -> {
 					ItemStack stack = new ItemStack(item);
 					stack.getOrCreateNbt().putInt("cheese_state",(state.ordinal()-1));
 					stacks.add(stack);
@@ -48,12 +53,17 @@ public class Growthcraft implements ModInitializer {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
+		GrowthCraftConstants.isGameRunning = true;
+		
+		GrowthcraftItems.register();
+		GrowthcraftBlocks.register();
+		
+		new DataGenerator().generate();
+		
 		FabricModelPredicateProviderRegistry.register(GrowthcraftBlocks.CHEDDAR.asItem(), new Identifier("cheese_state"), (itemStack, world, livingEntity, i) -> {
 			return CheeseBlock.CheeseState.fromStackRaw(itemStack);
 		});
 		
-		GrowthcraftItems.register();
-		GrowthcraftBlocks.register();
 		GROWTHCRAFT.info("Including Cheese™");
 	}
 }

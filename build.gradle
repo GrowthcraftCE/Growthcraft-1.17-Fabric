@@ -3,6 +3,8 @@ plugins {
 	id 'maven-publish'
 }
 
+import net.fabricmc.loom.task.RunClientTask
+
 sourceCompatibility = JavaVersion.VERSION_16
 targetCompatibility = JavaVersion.VERSION_16
 
@@ -40,6 +42,48 @@ processResources {
 	filesMatching("fabric.mod.json") {
 		expand "version": project.version
 	}
+}
+
+allprojects {
+	ext {
+		shouldGenerateData = true
+	}
+	sourceSets {
+		testmod {
+			compileClasspath += main.compileClasspath
+			runtimeClasspath += main.runtimeClasspath
+		}
+		main {
+			resources {
+				srcDir 'src/generated/resources'
+			}
+		}
+		datagen {
+			compileClasspath += main.compileClasspath
+			runtimeClasspath += main.runtimeClasspath
+		}
+	}
+
+	afterEvaluate {
+		if (shouldGenerateData) {
+			task generateData(type: RunClientTask, dependsOn: downloadAssets) {
+				classpath = configurations.runtimeClasspath
+				classpath sourceSets.main.output
+				classpath sourceSets.datagen.output
+			}
+
+			build.dependsOn generateData
+		}
+	}
+}
+
+sourceSets {
+	datagen
+}
+
+dependencies {
+	testmodImplementation sourceSets.main.output
+	datagenImplementation sourceSets.main.output
 }
 
 tasks.withType(JavaCompile).configureEach {

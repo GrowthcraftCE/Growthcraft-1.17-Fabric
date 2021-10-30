@@ -1,9 +1,0 @@
-
-{
-  "parent": "block/slab",
-  "textures": {
-    "bottom": "growthcraft:block/cheddar_bottom",
-    "top": "growthcraft:block/cheddar_top",
-    "side": "growthcraft:block/cheddar_slab_side"
-  }
-}
