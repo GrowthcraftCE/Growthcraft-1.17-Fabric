@@ -32,10 +32,12 @@ public class Growthcraft implements ModInitializer {
 	
 	public static List<ItemStack> getNBTItems(List<ItemStack> stacks){
 		for (CheeseBlock.CheeseState state : CheeseBlock.CheeseState.values()) {
-			if (state != CheeseBlock.CheeseState.NONE && state != CheeseBlock.CheeseState.SLICED_HQ && state != CheeseBlock.CheeseState.SLICED_H && state != CheeseBlock.CheeseState.SLICED_Q){
-				ItemStack stack = new ItemStack(GrowthcraftBlocks.CHEDDAR.asItem());
-				stack.getOrCreateNbt().putInt("cheese_state",(state.ordinal()-1));
-				stacks.add(stack);
+			if (state != CheeseBlock.CheeseState.NONE){
+				GrowthcraftItems.CREATIVE_TAB_ITEMS.forEach(item -> {
+					ItemStack stack = new ItemStack(item);
+					stack.getOrCreateNbt().putInt("cheese_state",(state.ordinal()-1));
+					stacks.add(stack);
+				});
 			}
 		}
 		return stacks;

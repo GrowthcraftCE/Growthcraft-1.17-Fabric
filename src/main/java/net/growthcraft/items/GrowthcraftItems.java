@@ -8,12 +8,17 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.SimpleRegistry;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static net.growthcraft.Growthcraft.MOD_ID;
 
 public class GrowthcraftItems {
     public static final Item RED_WAX = registerItem(new WaxItem(new Item.Settings().group(Growthcraft.ITEMGROUP)).color(DyeColor.RED), "red_wax");
     public static final Item CUTTING_KNIFE = registerItem(new KnifeItem(new Item.Settings().group(Growthcraft.ITEMGROUP)), "cutting_knife");
     public static final Item CHEDDAR_SLICE  = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP)), "cheddar_slice");
+    
+    public static final List<Item> CREATIVE_TAB_ITEMS = new ArrayList<>();
     
     public static void register(){}
 
