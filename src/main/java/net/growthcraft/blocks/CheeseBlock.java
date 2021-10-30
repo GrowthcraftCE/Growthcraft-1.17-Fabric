@@ -2,6 +2,7 @@ package net.growthcraft.blocks;
 
 import net.growthcraft.entity.CheeseBlockEntity;
 import net.growthcraft.entity.GrowthcraftBlockEntities;
+import net.growthcraft.items.GrowthcraftItems;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
@@ -34,6 +35,7 @@ public class CheeseBlock extends BlockWithEntity {
 	
 	public CheeseBlock(Settings settings) {
 		super(settings.nonOpaque());
+		GrowthcraftItems.CREATIVE_TAB_ITEMS.add(this.asItem());
 		this.setDefaultState(this.getDefaultState().with(CHEESE_STATE_TOP,CheeseState.NONE).with(CHEESE_STATE_BOTTOM,CheeseState.NONE));
 	}
 	
