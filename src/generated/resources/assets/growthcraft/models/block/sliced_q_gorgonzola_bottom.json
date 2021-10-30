@@ -1,5 +1,5 @@
 {
-  "parent": "block/slab",
+  "parent": "growthcraft:block/sliced_q_bottom",
   "textures": {
     "bottom": "growthcraft:block/sliced_q_gorgonzola_bottom",
     "top": "growthcraft:block/sliced_q_gorgonzola_top",

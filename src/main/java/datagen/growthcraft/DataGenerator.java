@@ -93,7 +93,19 @@ public class DataGenerator {
 							"\n" +
 									"{\n" + "  \"parent\": \"" +
 									(
-											type == SlabType.BOTTOM
+											np_state == CheeseBlock.CheeseState.SLICED_HQ && type == SlabType.BOTTOM
+													? "growthcraft:block/sliced_hq_bottom"
+													: np_state == CheeseBlock.CheeseState.SLICED_HQ && type == SlabType.TOP
+													? "growthcraft:block/sliced_hq_top"
+													: np_state == CheeseBlock.CheeseState.SLICED_H && type == SlabType.BOTTOM
+													? "growthcraft:block/sliced_h_bottom"
+													: np_state == CheeseBlock.CheeseState.SLICED_H && type == SlabType.TOP
+													? "growthcraft:block/sliced_hq_top"
+													: np_state == CheeseBlock.CheeseState.SLICED_Q && type == SlabType.BOTTOM
+													? "growthcraft:block/sliced_q_bottom"
+													: np_state == CheeseBlock.CheeseState.SLICED_Q && type == SlabType.TOP
+													? "growthcraft:block/sliced_q_top"
+													: type == SlabType.BOTTOM
 													? "block/slab"
 													: type == SlabType.DOUBLE
 													? "block/cube_bottom_top"
