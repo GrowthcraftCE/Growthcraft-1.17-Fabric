@@ -1,0 +1,8 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "growthcraft:block/none_monterey_bottom",
+    "top": "growthcraft:block/none_monterey_top",
+    "side": "growthcraft:block/none_monterey_slab_side"
+  }
+}
