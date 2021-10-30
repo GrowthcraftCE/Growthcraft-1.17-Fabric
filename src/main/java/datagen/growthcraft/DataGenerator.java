@@ -117,7 +117,6 @@ public class DataGenerator {
 						"    \"layer0\": \"growthcraft:item/unaged_"+cheeseName+"\"\n" +
 						"  },\n" +
 						"  \"overrides\": [\n" +
-						"    { \"predicate\": { \"cheese_state\": -1 }, \"model\": \"growthcraft:item/unaged_"+cheeseName+"\" },\n" +
 						"    { \"predicate\": { \"cheese_state\": 0 }, \"model\": \"growthcraft:item/unaged_"+cheeseName+"\" },\n" +
 						"    { \"predicate\": { \"cheese_state\": 1 }, \"model\": \"growthcraft:item/waxed_"+cheeseName+"\" },\n" +
 						"    { \"predicate\": { \"cheese_state\": 2 }, \"model\": \"growthcraft:item/aged_"+cheeseName+"\" },\n" +

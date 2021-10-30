@@ -6,12 +6,6 @@
   "overrides": [
     {
       "predicate": {
-        "cheese_state": -1
-      },
-      "model": "growthcraft:item/unaged_cheddar"
-    },
-    {
-      "predicate": {
         "cheese_state": 0
       },
       "model": "growthcraft:item/unaged_cheddar"
