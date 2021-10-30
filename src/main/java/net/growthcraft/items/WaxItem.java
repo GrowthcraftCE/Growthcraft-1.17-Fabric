@@ -14,9 +14,6 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldEvents;
-
-import java.nio.channels.FileChannel;
 
 import static net.growthcraft.blocks.CheeseBlock.CHEESE_STATE_BOTTOM;
 import static net.growthcraft.blocks.CheeseBlock.CHEESE_STATE_TOP;
