@@ -8,6 +8,6 @@ import net.minecraft.util.registry.Registry;
 
 public class GrowthcraftBlockEntities {
 
-    public static BlockEntityType<CheeseBlockEntity> CHEESE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, Growthcraft.MOD_ID+":cheese", FabricBlockEntityTypeBuilder.create(CheeseBlockEntity::new, GrowthcraftBlocks.CHEDDAR).build());
+    public static BlockEntityType<CheeseBlockEntity> CHEESE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, Growthcraft.MOD_ID+":cheese", FabricBlockEntityTypeBuilder.create(CheeseBlockEntity::new, GrowthcraftBlocks.CHEDDAR, GrowthcraftBlocks.GORGONZOLA).build());
 
 }
