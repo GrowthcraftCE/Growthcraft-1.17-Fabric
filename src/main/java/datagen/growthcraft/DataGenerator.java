@@ -117,7 +117,6 @@ public class DataGenerator {
 						"    \"layer0\": \"growthcraft:item/unaged_"+cheeseName+"\"\n" +
 						"  },\n" +
 						"  \"overrides\": [\n" +
-						"    { \"predicate\": { \"cheese_state\": -1 }, \"model\": \"growthcraft:item/unaged_"+cheeseName+"\" },\n" +
 						"    { \"predicate\": { \"cheese_state\": 0 }, \"model\": \"growthcraft:item/unaged_"+cheeseName+"\" },\n" +
 						"    { \"predicate\": { \"cheese_state\": 1 }, \"model\": \"growthcraft:item/waxed_"+cheeseName+"\" },\n" +
 						"    { \"predicate\": { \"cheese_state\": 2 }, \"model\": \"growthcraft:item/aged_"+cheeseName+"\" },\n" +
@@ -151,9 +150,9 @@ public class DataGenerator {
 													: "block/slab_top"
 									) + "\",\n" +
 									"  \"textures\": {\n" +
-									"    \"bottom\": \"growthcraft:block/" + state + "_" + cheeseName + "_bottom\",\n" +
-									"    \"top\": \"growthcraft:block/" + state + "_" + cheeseName + "_top\",\n" +
-									"    \"side\": \"growthcraft:block/" + state + "_" + cheeseName + "_slab_side\"\n" +
+									"    \"bottom\": \"growthcraft:block/" + state.replace("_hq","").replace("_h","").replace("_q","") + "_" + cheeseName + "_bottom\",\n" +
+									"    \"top\": \"growthcraft:block/" + state.replace("_hq","").replace("_h","").replace("_q","") + "_" + cheeseName + "_top\",\n" +
+									"    \"side\": \"growthcraft:block/" + state.replace("_hq","").replace("_h","").replace("_q","") + "_" + cheeseName + "_slab_side\"\n" +
 									"  }\n" +
 									"}"
 					));

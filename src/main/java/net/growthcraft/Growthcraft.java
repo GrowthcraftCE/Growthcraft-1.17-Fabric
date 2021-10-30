@@ -10,6 +10,9 @@ import net.growthcraft.blocks.GrowthcraftBlocks;
 import net.growthcraft.items.GrowthcraftItems;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
+import net.minecraft.client.item.UnclampedModelPredicateProvider;
+import net.minecraft.client.world.ClientWorld;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -17,6 +20,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,11 +64,27 @@ public class Growthcraft implements ModInitializer {
 		
 		new DataGenerator().generate();
 		
-		FabricModelPredicateProviderRegistry.register(GrowthcraftBlocks.Cheeses.CHEDDAR.asItem(), new Identifier("cheese_state"), (itemStack, world, livingEntity, i) -> {
-			return CheeseBlock.CheeseState.fromStackRaw(itemStack);
+		FabricModelPredicateProviderRegistry.register(GrowthcraftBlocks.Cheeses.CHEDDAR.asItem(), new Identifier("cheese_state"), new UnclampedModelPredicateProvider() {
+			@Override
+			public float call(ItemStack itemStack, @Nullable ClientWorld clientWorld, @Nullable LivingEntity livingEntity, int i) {
+				return CheeseBlock.CheeseState.fromStackRaw(itemStack);
+			}
+			
+			@Override
+			public float unclampedCall(ItemStack stack, @Nullable ClientWorld world, @Nullable LivingEntity entity, int seed) {
+				return call(stack, world, entity, seed);
+			}
 		});
-		FabricModelPredicateProviderRegistry.register(GrowthcraftBlocks.Cheeses.GORGONZOLA.asItem(), new Identifier("cheese_state"), (itemStack, world, livingEntity, i) -> {
-			return CheeseBlock.CheeseState.fromStackRaw(itemStack);
+		FabricModelPredicateProviderRegistry.register(GrowthcraftBlocks.Cheeses.GORGONZOLA.asItem(), new Identifier("cheese_state"), new UnclampedModelPredicateProvider() {
+			@Override
+			public float call(ItemStack itemStack, @Nullable ClientWorld clientWorld, @Nullable LivingEntity livingEntity, int i) {
+				return CheeseBlock.CheeseState.fromStackRaw(itemStack);
+			}
+			
+			@Override
+			public float unclampedCall(ItemStack stack, @Nullable ClientWorld world, @Nullable LivingEntity entity, int seed) {
+				return call(stack, world, entity, seed);
+			}
 		});
 		FabricModelPredicateProviderRegistry.register(GrowthcraftBlocks.Cheeses.EMMENTALER.asItem(), new Identifier("cheese_state"), (itemStack, world, livingEntity, i) -> {
 			return CheeseBlock.CheeseState.fromStackRaw(itemStack);
