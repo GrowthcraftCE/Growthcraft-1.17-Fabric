@@ -26,7 +26,7 @@
       "predicate": {
         "cheese_state": 2
       },
-      "model": "growthcraft:item/waxed_cheddar"
+      "model": "growthcraft:item/aged_cheddar"
     },
     {
       "predicate": {

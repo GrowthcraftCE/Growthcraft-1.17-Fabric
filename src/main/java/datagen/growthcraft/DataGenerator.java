@@ -120,7 +120,7 @@ public class DataGenerator {
 						"    { \"predicate\": { \"cheese_state\": -1 }, \"model\": \"growthcraft:item/unaged_"+cheeseName+"\" },\n" +
 						"    { \"predicate\": { \"cheese_state\": 0 }, \"model\": \"growthcraft:item/unaged_"+cheeseName+"\" },\n" +
 						"    { \"predicate\": { \"cheese_state\": 1 }, \"model\": \"growthcraft:item/waxed_"+cheeseName+"\" },\n" +
-						"    { \"predicate\": { \"cheese_state\": 2 }, \"model\": \"growthcraft:item/waxed_"+cheeseName+"\" },\n" +
+						"    { \"predicate\": { \"cheese_state\": 2 }, \"model\": \"growthcraft:item/aged_"+cheeseName+"\" },\n" +
 						"    { \"predicate\": { \"cheese_state\": 3 }, \"model\": \"growthcraft:item/sliced_"+cheeseName+"\" },\n" +
 						"    { \"predicate\": { \"cheese_state\": 4 }, \"model\": \"growthcraft:item/sliced_"+cheeseName+"\" },\n" +
 						"    { \"predicate\": { \"cheese_state\": 5 }, \"model\": \"growthcraft:item/sliced_"+cheeseName+"\" }\n" +
