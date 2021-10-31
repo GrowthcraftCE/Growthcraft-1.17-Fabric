@@ -1,6 +1,17 @@
 {
 	"item.growthcraft.cutting_knife": "Cutting Knife",
-	"block.growthcraft.cheddar": "Cheddar Wheel",
+	"block.growthcraft.cheddar": "Cheddar Cheese",
+	"block.growthcraft.gorgonzola": "Gorgonzola Cheese",
+	"block.growthcraft.emmentaler": "Emmentaler Cheese",
+	"block.growthcraft.monterey": "Monterey Cheese",
 	"item.growthcraft.red_wax": "Red Wax",
-	"item.growthcraft.cheddar_slice": "Cheddar Slice"
+	"item.growthcraft.cheddar_slice": "Cheddar Slice",
+
+	"cheese_state.growthcraft.none": "Ready for aging",
+	"cheese_state.growthcraft.unaged": "Unaged",
+	"cheese_state.growthcraft.waxed": "Waxed",
+	"cheese_state.growthcraft.aged": "Aged",
+	"cheese_state.growthcraft.sliced_hq": "Aged cut (3 of 4 left)",
+	"cheese_state.growthcraft.sliced_h": "Aged cut (2 of 4 left)",
+	"cheese_state.growthcraft.sliced_q": "Aged cut (1 of 4 left)"
 }
