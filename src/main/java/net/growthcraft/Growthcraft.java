@@ -64,35 +64,25 @@ public class Growthcraft implements ModInitializer {
 		
 		new DataGenerator().generate();
 		
-		FabricModelPredicateProviderRegistry.register(GrowthcraftBlocks.Cheeses.CHEDDAR.asItem(), new Identifier("cheese_state"), new UnclampedModelPredicateProvider() {
-			@Override
-			public float call(ItemStack itemStack, @Nullable ClientWorld clientWorld, @Nullable LivingEntity livingEntity, int i) {
-				return CheeseBlock.CheeseState.fromStackRaw(itemStack);
-			}
-			
-			@Override
-			public float unclampedCall(ItemStack stack, @Nullable ClientWorld world, @Nullable LivingEntity entity, int seed) {
-				return call(stack, world, entity, seed);
-			}
-		});
-		FabricModelPredicateProviderRegistry.register(GrowthcraftBlocks.Cheeses.GORGONZOLA.asItem(), new Identifier("cheese_state"), new UnclampedModelPredicateProvider() {
-			@Override
-			public float call(ItemStack itemStack, @Nullable ClientWorld clientWorld, @Nullable LivingEntity livingEntity, int i) {
-				return CheeseBlock.CheeseState.fromStackRaw(itemStack);
-			}
-			
-			@Override
-			public float unclampedCall(ItemStack stack, @Nullable ClientWorld world, @Nullable LivingEntity entity, int seed) {
-				return call(stack, world, entity, seed);
-			}
-		});
-		FabricModelPredicateProviderRegistry.register(GrowthcraftBlocks.Cheeses.EMMENTALER.asItem(), new Identifier("cheese_state"), (itemStack, world, livingEntity, i) -> {
-			return CheeseBlock.CheeseState.fromStackRaw(itemStack);
-		});
-		FabricModelPredicateProviderRegistry.register(GrowthcraftBlocks.Cheeses.MONTEREY.asItem(), new Identifier("cheese_state"), (itemStack, world, livingEntity, i) -> {
-			return CheeseBlock.CheeseState.fromStackRaw(itemStack);
-		});
+		registerPredicateProvider(GrowthcraftBlocks.Cheeses.CHEDDAR.asItem(),"cheese_state");
+		registerPredicateProvider(GrowthcraftBlocks.Cheeses.GORGONZOLA.asItem(),"cheese_state");
+		registerPredicateProvider(GrowthcraftBlocks.Cheeses.EMMENTALER.asItem(),"cheese_state");
+		registerPredicateProvider(GrowthcraftBlocks.Cheeses.MONTEREY.asItem(),"cheese_state");
 		
 		GROWTHCRAFT.info("Including Cheese™");
+	}
+	
+	private void registerPredicateProvider(Item item, String predicate){
+		FabricModelPredicateProviderRegistry.register(item, new Identifier(predicate), new UnclampedModelPredicateProvider() {
+			@Override
+			public float call(ItemStack itemStack, @Nullable ClientWorld clientWorld, @Nullable LivingEntity livingEntity, int i) {
+				return CheeseBlock.CheeseState.fromStackRaw(itemStack);
+			}
+			
+			@Override
+			public float unclampedCall(ItemStack stack, @Nullable ClientWorld world, @Nullable LivingEntity entity, int seed) {
+				return call(stack, world, entity, seed);
+			}
+		});
 	}
 }

@@ -1,8 +1,8 @@
 {
   "parent": "growthcraft:block/sliced_hq_bottom",
   "textures": {
-    "bottom": "growthcraft:block/sliced_hq_monterey_bottom",
-    "top": "growthcraft:block/sliced_hq_monterey_top",
-    "side": "growthcraft:block/sliced_hq_monterey_slab_side"
+    "bottom": "growthcraft:block/sliced_monterey_bottom",
+    "top": "growthcraft:block/sliced_monterey_top",
+    "side": "growthcraft:block/sliced_monterey_slab_side"
   }
 }
