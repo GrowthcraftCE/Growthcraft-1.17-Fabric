@@ -24,6 +24,7 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.StringIdentifiable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
@@ -162,7 +163,7 @@ public class CheeseBlock extends BlockWithEntity {
 		}
 		
 		public static CheeseState fromStack(ItemStack stack){
-			return CheeseState.values()[fromStackRaw(stack)];
+			return CheeseState.values()[MathHelper.clamp(fromStackRaw(stack)-1,0,255)];
 		}
 		
 		public static int fromStackRaw(ItemStack stack){

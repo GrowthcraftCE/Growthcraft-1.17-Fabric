@@ -2,6 +2,7 @@ package datagen.growthcraft;
 
 import com.google.gson.JsonParser;
 import me.shedaniel.cloth.api.datagen.v1.DataGeneratorHandler;
+import me.shedaniel.cloth.api.datagen.v1.LootTableData;
 import me.shedaniel.cloth.api.datagen.v1.ModelData;
 import me.shedaniel.cloth.api.datagen.v1.ModelStateData;
 import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint;
@@ -13,6 +14,22 @@ import net.growthcraft.items.GrowthcraftItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.enums.SlabType;
 import net.minecraft.item.Item;
+import net.minecraft.loot.LootPool;
+import net.minecraft.loot.LootTable;
+import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
+import net.minecraft.loot.condition.LootCondition;
+import net.minecraft.loot.context.LootContextType;
+import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.entry.LeafEntry;
+import net.minecraft.loot.entry.LootPoolEntry;
+import net.minecraft.loot.function.LootFunction;
+import net.minecraft.loot.function.SetCountLootFunction;
+import net.minecraft.loot.function.SetNbtLootFunction;
+import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
+import net.minecraft.loot.provider.number.LootNumberProvider;
+import net.minecraft.loot.provider.number.LootNumberProviderTypes;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.predicate.StatePredicate;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -29,6 +46,106 @@ public class DataGenerator {
 		
 		DataGeneratorHandler handler = DataGeneratorHandler.create(Paths.get("../src/generated/resources"));
 		
+		generateLootTables(handler);
+		generateModels(handler);
+		
+		handler.run();
+	}
+	
+	private void generateLootTables(DataGeneratorHandler handler) {
+		LootTableData table = handler.getLootTables();
+		
+		NbtCompound waxed = new NbtCompound();
+		waxed.putInt("cheese_state",1);
+		NbtCompound aged = new NbtCompound();
+		aged.putInt("cheese_state",2);
+		
+		table.register(GrowthcraftBlocks.Cheeses.GORGONZOLA,
+				new LootTable.Builder().type(LootContextType.create().build())
+						.pool(
+								LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0f))
+										.bonusRolls(ConstantLootNumberProvider.create(0.0f))
+										.with(ItemEntry.builder(GrowthcraftBlocks.Cheeses.GORGONZOLA.asItem())
+												.apply(SetNbtLootFunction.builder(waxed)
+														.conditionally(BlockStatePropertyLootCondition.builder(GrowthcraftBlocks.Cheeses.GORGONZOLA)
+																.properties(StatePredicate.Builder.create()
+																		.exactMatch(CheeseBlock.CHEESE_STATE_BOTTOM, CheeseBlock.CheeseState.WAXED)
+																		.exactMatch(CheeseBlock.CHEESE_STATE_TOP, CheeseBlock.CheeseState.NONE)
+																)
+														)
+												)
+												.apply(SetNbtLootFunction.builder(waxed)
+														.conditionally(BlockStatePropertyLootCondition.builder(GrowthcraftBlocks.Cheeses.GORGONZOLA)
+																.properties(StatePredicate.Builder.create()
+																		.exactMatch(CheeseBlock.CHEESE_STATE_BOTTOM, CheeseBlock.CheeseState.NONE)
+																		.exactMatch(CheeseBlock.CHEESE_STATE_TOP, CheeseBlock.CheeseState.WAXED)
+																)
+														)
+												)
+												.apply(SetNbtLootFunction.builder(waxed)
+														.conditionally(BlockStatePropertyLootCondition.builder(GrowthcraftBlocks.Cheeses.GORGONZOLA)
+																.properties(StatePredicate.Builder.create()
+																		.exactMatch(CheeseBlock.CHEESE_STATE_BOTTOM, CheeseBlock.CheeseState.WAXED)
+																		.exactMatch(CheeseBlock.CHEESE_STATE_TOP, CheeseBlock.CheeseState.WAXED)
+																)
+														)
+												)
+												
+												.apply(SetNbtLootFunction.builder(aged)
+														.conditionally(BlockStatePropertyLootCondition.builder(GrowthcraftBlocks.Cheeses.GORGONZOLA)
+																.properties(StatePredicate.Builder.create()
+																		.exactMatch(CheeseBlock.CHEESE_STATE_BOTTOM, CheeseBlock.CheeseState.AGED)
+																		.exactMatch(CheeseBlock.CHEESE_STATE_TOP, CheeseBlock.CheeseState.NONE)
+																)
+														)
+												)
+												.apply(SetNbtLootFunction.builder(aged)
+														.conditionally(BlockStatePropertyLootCondition.builder(GrowthcraftBlocks.Cheeses.GORGONZOLA)
+																.properties(StatePredicate.Builder.create()
+																		.exactMatch(CheeseBlock.CHEESE_STATE_BOTTOM, CheeseBlock.CheeseState.NONE)
+																		.exactMatch(CheeseBlock.CHEESE_STATE_TOP, CheeseBlock.CheeseState.AGED)
+																)
+														)
+												)
+												.apply(SetNbtLootFunction.builder(aged)
+														.conditionally(BlockStatePropertyLootCondition.builder(GrowthcraftBlocks.Cheeses.GORGONZOLA)
+																.properties(StatePredicate.Builder.create()
+																		.exactMatch(CheeseBlock.CHEESE_STATE_BOTTOM, CheeseBlock.CheeseState.AGED)
+																		.exactMatch(CheeseBlock.CHEESE_STATE_TOP, CheeseBlock.CheeseState.AGED)
+																)
+														)
+												)
+												
+												.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(2.0f))
+														.conditionally(BlockStatePropertyLootCondition.builder(GrowthcraftBlocks.Cheeses.GORGONZOLA)
+																.properties(StatePredicate.Builder.create()
+																		.exactMatch(CheeseBlock.CHEESE_STATE_BOTTOM, CheeseBlock.CheeseState.UNAGED)
+																		.exactMatch(CheeseBlock.CHEESE_STATE_TOP, CheeseBlock.CheeseState.UNAGED)
+																)
+														)
+												)
+												.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(2.0f))
+														.conditionally(BlockStatePropertyLootCondition.builder(GrowthcraftBlocks.Cheeses.GORGONZOLA)
+																.properties(StatePredicate.Builder.create()
+																		.exactMatch(CheeseBlock.CHEESE_STATE_BOTTOM, CheeseBlock.CheeseState.WAXED)
+																		.exactMatch(CheeseBlock.CHEESE_STATE_TOP, CheeseBlock.CheeseState.WAXED)
+																)
+														)
+												)
+												.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(2.0f))
+														.conditionally(BlockStatePropertyLootCondition.builder(GrowthcraftBlocks.Cheeses.GORGONZOLA)
+																.properties(StatePredicate.Builder.create()
+																		.exactMatch(CheeseBlock.CHEESE_STATE_BOTTOM, CheeseBlock.CheeseState.AGED)
+																		.exactMatch(CheeseBlock.CHEESE_STATE_TOP, CheeseBlock.CheeseState.AGED)
+																)
+														)
+												)
+										)
+						)
+		);
+	}
+	
+	private void generateModels(DataGeneratorHandler handler) {
 		ModelStateData modelStates = handler.getModelStates();
 		Arrays.stream(GrowthcraftItems.class.getDeclaredFields()).forEach(field -> {
 			try {
@@ -159,7 +276,5 @@ public class DataGenerator {
 				}
 			}
 		});
-		
-		handler.run();
 	}
 }
