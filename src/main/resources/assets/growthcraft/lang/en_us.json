@@ -7,6 +7,7 @@
 	"item.growthcraft.red_wax": "Red Wax",
 	"item.growthcraft.cheddar_slice": "Cheddar Slice",
 
+	"cheese_state.growthcraft.error": "Error: This Cheese can't be waxed",
 	"cheese_state.growthcraft.none": "Ready for aging",
 	"cheese_state.growthcraft.unaged": "Unaged",
 	"cheese_state.growthcraft.waxed": "Waxed",

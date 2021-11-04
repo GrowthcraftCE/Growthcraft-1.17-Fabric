@@ -137,7 +137,8 @@ public class CheeseBlock extends BlockWithEntity {
 	
 	@Override
 	public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
-		tooltip.add(new TranslatableText("cheese_state.growthcraft." + CheeseState.fromStack(stack).name().toLowerCase(Locale.ROOT)).setStyle(Style.EMPTY.withColor(Formatting.GRAY)));
+		String state = CheeseState.fromStack(stack).name().toLowerCase(Locale.ROOT);
+		tooltip.add(new TranslatableText("cheese_state.growthcraft." + ((state.equals("waxed")&&wax!=null) ? "waxed" : "error")).setStyle(Style.EMPTY.withColor(Formatting.GRAY)));
 		super.appendTooltip(stack, world, tooltip, options);
 	}
 	

@@ -23,7 +23,7 @@ public class WaxItem extends HoneycombItem {
     public WaxItem(Settings settings) {
         super(settings);
     }
-
+    
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
         super.useOnBlock(context);
@@ -56,6 +56,4 @@ public class WaxItem extends HoneycombItem {
         this.wax = color;
         return this;
     }
-
-
 }

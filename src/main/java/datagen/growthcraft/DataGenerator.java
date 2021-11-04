@@ -155,7 +155,15 @@ public class DataGenerator {
 	
 	private void generateModels(DataGeneratorHandler handler) {
 		ModelStateData modelStates = handler.getModelStates();
-		Arrays.stream(GrowthcraftItems.class.getDeclaredFields()).forEach(field -> {
+		//noinspection deprecation
+		for (Item wax : GrowthcraftItems.listOfWaxes().values()){
+			modelStates.addGeneratedItemModel(wax);
+		}
+		//noinspection deprecation
+		for (Item milk : GrowthcraftItems.listOfMilks().values()){
+			modelStates.addGeneratedItemModel(milk);
+		}
+		Arrays.stream(GrowthcraftItems.Singleton.class.getDeclaredFields()).forEach(field -> {
 			try {
 				modelStates.addGeneratedItemModel((Item)field.get(null));
 			} catch (IllegalAccessException e) {

@@ -35,7 +35,7 @@ public class Growthcraft implements ModInitializer {
 	public static List<Item> CREATIVE_TAB_ITEMS = new ArrayList<>();
 
 	public static ItemGroup ITEMGROUP = FabricItemGroupBuilder.build(new Identifier(MOD_ID, "item_group"),
-			() -> new ItemStack(GrowthcraftItems.RED_WAX));
+			() -> new ItemStack(GrowthcraftItems.Singleton.CUTTING_KNIFE));
 	public static ItemGroup CHEESES = FabricItemGroupBuilder.create(new Identifier(MOD_ID, "cheeses"))
 			.appendItems(Growthcraft::getNBTItems).icon(() -> new ItemStack(GrowthcraftBlocks.Cheeses.CHEDDAR.get())).build();
 	
