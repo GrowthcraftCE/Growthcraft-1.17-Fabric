@@ -8,6 +8,7 @@ import java.util.NoSuchElementException;
 
 public class CheeseDef extends BlockDef{
 	private final Item slice;
+	private final Item curds;
 	
 	public static CheeseDef getCheese(Block block) {
 		for (CheeseDef def : GrowthcraftBlocks.cheeseDefList) {
@@ -19,9 +20,13 @@ public class CheeseDef extends BlockDef{
 	public Item slice(){
 		return slice;
 	}
+	public Item curds(){
+		return curds;
+	}
 	
-	public CheeseDef(Block block, Item slice){
+	public CheeseDef(Block block, Item slice, Item curds){
 		super(block);
 		this.slice = slice;
+		this.curds = curds;
 	}
 }

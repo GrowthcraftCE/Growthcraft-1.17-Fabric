@@ -21,7 +21,11 @@ import static net.growthcraft.items.GrowthcraftItems.registerItem;
 public class GrowthcraftBlocks {
 
     public static List<CheeseDef> cheeseDefList = new ArrayList<>();
+    public static class Decorative{
+    
+    }
     public static class Cheeses{
+        // Add cheese here:
         public static final CheeseDef CHEDDAR = addCheese("cheddar",DyeColor.RED);
         public static final CheeseDef GORGONZOLA = addCheese("gorgonzola", null);
         public static final CheeseDef EMMENTALER = addCheese("emmentaler", null);
@@ -29,7 +33,8 @@ public class GrowthcraftBlocks {
     
         private static CheeseDef addCheese(String id, DyeColor wax) {
             Item slice = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP).food(new FoodComponent.Builder().hunger(6).saturationModifier(2).build())), id+"_slice");
-            CheeseDef def = new CheeseDef(registerBlock(id, new CheeseBlock(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL)).waxedBy(wax)),slice);
+            Item curds = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP)), id+"_curds");
+            CheeseDef def = new CheeseDef(registerBlock(id, new CheeseBlock(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL)).waxedBy(wax)),slice, curds);
             cheeseDefList.add(def);
             registerClientBlock(def);
             return def;

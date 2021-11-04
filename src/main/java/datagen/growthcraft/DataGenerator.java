@@ -12,7 +12,10 @@ import net.growthcraft.blocks.CheeseBlock;
 import net.growthcraft.blocks.CheeseDef;
 import net.growthcraft.blocks.GrowthcraftBlocks;
 import net.growthcraft.items.GrowthcraftItems;
+import net.growthcraft.items.WaxItem;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.enums.SlabType;
 import net.minecraft.item.Item;
 import net.minecraft.loot.LootPool;
@@ -37,6 +40,8 @@ import net.minecraft.util.registry.Registry;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Locale;
+
+import static net.growthcraft.Growthcraft.MOD_ID;
 
 public class DataGenerator {
 	/**
@@ -155,9 +160,38 @@ public class DataGenerator {
 	
 	private void generateModels(DataGeneratorHandler handler) {
 		ModelStateData modelStates = handler.getModelStates();
+		JsonParser jsonParser = new JsonParser();
+		
 		//noinspection deprecation
-		for (Item wax : GrowthcraftItems.listOfWaxes().values()){
+		for (WaxItem wax : GrowthcraftItems.listOfWaxes().values()){
 			modelStates.addGeneratedItemModel(wax);
+			String blockmodel = "{\n" +
+					"    \"parent\": \"block/cube_all\",\n" +
+					"    \"textures\": {\n" +
+					"        \"all\": \""+MOD_ID+":block/"+wax.wax+"_wax"+"_ERROR"+"\"\n" +
+					"    }\n" +
+					"}";
+			modelStates.addState(new Identifier(MOD_ID, wax.wax+"_wax"+"_block"),jsonParser.parse("{\n" +
+					"    \"variants\": {\n" +
+					"        \"\": { \"model\": \""+MOD_ID+":block/"+ wax.wax+"_wax"+"_block"+"\" }\n" +
+					"    }\n" +
+					"}"));
+			modelStates.addState(new Identifier(MOD_ID, wax.wax+"_wax"+"_bricks"),jsonParser.parse("{\n" +
+					"    \"variants\": {\n" +
+					"        \"\": { \"model\": \""+MOD_ID+":block/"+ wax.wax+"_wax"+"_bricks"+"\" }\n" +
+					"    }\n" +
+					"}"));
+			modelStates.addState(new Identifier(MOD_ID, wax.wax+"_wax"+"_block"),jsonParser.parse("{\n" +
+					"    \"variants\": {\n" +
+					"        \"\": { \"model\": \""+MOD_ID+":block/"+ wax.wax+"_wax"+"_cut_block"+"\" }\n" +
+					"    }\n" +
+					"}"));
+			modelStates.addModel(new Identifier(MOD_ID, "block/"+wax.wax+"_block"),jsonParser.parse((blockmodel.replace("ERROR","block"))));
+			modelStates.addModel(new Identifier(MOD_ID, "block/"+wax.wax+"_wax"+"_bricks"),jsonParser.parse((blockmodel.replace("ERROR","bricks"))));
+			modelStates.addModel(new Identifier(MOD_ID, "block/"+wax.wax+"_wax"+"_cut_block"),jsonParser.parse((blockmodel.replace("ERROR","cut_block"))));
+			modelStates.addSimpleItemModel(new Identifier(MOD_ID, "item/"+wax.wax+"_wax"+"_block"),new Identifier(MOD_ID+":block/"+wax.wax+"_wax"+"_block"));
+			modelStates.addSimpleItemModel(new Identifier(MOD_ID, "item/"+wax.wax+"_wax"+"_bricks"),new Identifier(MOD_ID+":block/"+wax.wax+"_wax"+"_bricks"));
+			modelStates.addSimpleItemModel(new Identifier(MOD_ID, "item/"+wax.wax+"_wax"+"_cut_block"),new Identifier(MOD_ID+":block/"+wax.wax+"_wax"+"_cut_block"));
 		}
 		//noinspection deprecation
 		for (Item milk : GrowthcraftItems.listOfMilks().values()){
@@ -171,12 +205,11 @@ public class DataGenerator {
 			}
 		});
 		
-		JsonParser jsonParser = new JsonParser();
-		
 		Arrays.stream(GrowthcraftBlocks.Cheeses.class.getDeclaredFields()).forEach(field -> {
 			String cheeseName = field.getName().toLowerCase(Locale.ROOT);
 			try {
 				modelStates.addGeneratedItemModel(((CheeseDef)field.get(null)).slice().asItem());
+				modelStates.addGeneratedItemModel(((CheeseDef)field.get(null)).curds().asItem());
 				modelStates.addState(((CheeseDef) field.get(null)).get(), () -> jsonParser.parse("{\n" +
 						"  \"multipart\": [\n" +
 						"    {   \"when\": { \"cheese_state_top\": \"unaged\" },\n" +
@@ -221,31 +254,31 @@ public class DataGenerator {
 				e.printStackTrace();
 			}
 			for (CheeseBlock.CheeseState np_state : CheeseBlock.CheeseState.values()) {
-				modelStates.addModel(new Identifier(Growthcraft.MOD_ID, "item/" + "unaged_"+cheeseName),()-> jsonParser.parse("{\n" +
+				modelStates.addModel(new Identifier(MOD_ID, "item/" + "unaged_"+cheeseName),()-> jsonParser.parse("{\n" +
 						"  \"parent\": \"item/generated\",\n" +
 						"  \"textures\": {\n" +
 						"    \"layer0\": \"growthcraft:item/unaged_"+cheeseName+"\"\n" +
 						"  }\n" +
 						"}"));
-				modelStates.addModel(new Identifier(Growthcraft.MOD_ID, "item/" + "waxed_"+cheeseName),()-> jsonParser.parse("{\n" +
+				modelStates.addModel(new Identifier(MOD_ID, "item/" + "waxed_"+cheeseName),()-> jsonParser.parse("{\n" +
 						"  \"parent\": \"item/generated\",\n" +
 						"  \"textures\": {\n" +
 						"    \"layer0\": \"growthcraft:item/waxed_"+cheeseName+"\"\n" +
 						"  }\n" +
 						"}"));
-				modelStates.addModel(new Identifier(Growthcraft.MOD_ID, "item/" + "aged_"+cheeseName),()-> jsonParser.parse("{\n" +
+				modelStates.addModel(new Identifier(MOD_ID, "item/" + "aged_"+cheeseName),()-> jsonParser.parse("{\n" +
 						"  \"parent\": \"item/generated\",\n" +
 						"  \"textures\": {\n" +
 						"    \"layer0\": \"growthcraft:item/aged_"+cheeseName+"\"\n" +
 						"  }\n" +
 						"}"));
-				modelStates.addModel(new Identifier(Growthcraft.MOD_ID, "item/" + "sliced_"+cheeseName),()-> jsonParser.parse("{\n" +
+				modelStates.addModel(new Identifier(MOD_ID, "item/" + "sliced_"+cheeseName),()-> jsonParser.parse("{\n" +
 						"\t\"parent\": \"item/generated\",\n" +
 						"\t\"textures\": {\n" +
 						"\t\t\"layer0\": \"growthcraft:item/sliced_"+cheeseName+"\"\n" +
 						"\t}\n" +
 						"}"));
-				modelStates.addModel(new Identifier(Growthcraft.MOD_ID, "item/" + cheeseName),()-> jsonParser.parse("{\n" +
+				modelStates.addModel(new Identifier(MOD_ID, "item/" + cheeseName),()-> jsonParser.parse("{\n" +
 						"  \"parent\": \"item/generated\",\n" +
 						"  \"textures\": {\n" +
 						"    \"layer0\": \"growthcraft:item/unaged_"+cheeseName+"\"\n" +
@@ -262,7 +295,7 @@ public class DataGenerator {
 				for (SlabType type : SlabType.values()) {
 					String nfstate = np_state.asString().toLowerCase(Locale.ROOT);
 					String state = (nfstate.contains("sliced") ? "aged" : nfstate)+"_";
-					modelStates.addModel(new Identifier(Growthcraft.MOD_ID, "block/" + nfstate + "_" + cheeseName + "_" + type.toString().toLowerCase(Locale.ROOT)), () -> jsonParser.parse(
+					modelStates.addModel(new Identifier(MOD_ID, "block/" + nfstate + "_" + cheeseName + "_" + type.toString().toLowerCase(Locale.ROOT)), () -> jsonParser.parse(
 							"\n" +
 									"{\n" + "  \"parent\": \"" +
 									(

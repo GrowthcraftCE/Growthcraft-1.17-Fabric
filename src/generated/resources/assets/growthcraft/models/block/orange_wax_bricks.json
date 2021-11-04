@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "growthcraft:block/orange_wax_bricks"
+  }
+}
