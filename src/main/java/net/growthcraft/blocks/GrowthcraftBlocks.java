@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.growthcraft.Growthcraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.SlabBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.FoodComponent;
 import net.minecraft.item.Item;
@@ -19,10 +20,11 @@ import static net.growthcraft.Growthcraft.MOD_ID;
 import static net.growthcraft.items.GrowthcraftItems.registerItem;
 
 public class GrowthcraftBlocks {
-
     public static List<CheeseDef> cheeseDefList = new ArrayList<>();
-    public static class Decorative{
     
+    public static class Slabs{
+        public static final BlockDef DIRT_SLAB = registerBlock("dirt_slab",new SlabBlock(FabricBlockSettings.copyOf(Blocks.DIRT)));
+        public static final BlockDef FARMLAND_SLAB = registerBlock("farmland_slab",new FarmlandSlab(FabricBlockSettings.copyOf(Blocks.FARMLAND)));
     }
     public static class Cheeses{
         // Add cheese here:
@@ -45,17 +47,17 @@ public class GrowthcraftBlocks {
         }
     }
 
-    public static Block registerBlock(String id, Block block) {
+    public static BlockDef registerBlock(String id, Block block) {
         return registerBlock(id,block,true);
     }
 
-    public static Block registerBlock(String id, Block block, boolean hasItem) {
+    public static BlockDef registerBlock(String id, Block block, boolean hasItem) {
         if (hasItem) {
             Item item = new BlockItem(block, new Item.Settings().group(Growthcraft.ITEMGROUP));
             SimpleRegistry.register(Registry.ITEM, new Identifier(MOD_ID, id), item);
             Growthcraft.CREATIVE_TAB_ITEMS.add(item);
         }
-        return SimpleRegistry.register(Registry.BLOCK, new Identifier(MOD_ID,id), block);
+        return new BlockDef(SimpleRegistry.register(Registry.BLOCK, new Identifier(MOD_ID,id), block));
     }
 
     public static void register(){}

@@ -8,6 +8,7 @@ import me.shedaniel.cloth.api.datagen.v1.ModelStateData;
 import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint;
 import net.growthcraft.GrowthCraftConstants;
 import net.growthcraft.Growthcraft;
+import net.growthcraft.blocks.BlockDef;
 import net.growthcraft.blocks.CheeseBlock;
 import net.growthcraft.blocks.CheeseDef;
 import net.growthcraft.blocks.GrowthcraftBlocks;
@@ -186,9 +187,9 @@ public class DataGenerator {
 					"        \"\": { \"model\": \""+MOD_ID+":block/"+ wax.wax+"_wax"+"_cut_block"+"\" }\n" +
 					"    }\n" +
 					"}"));
-			modelStates.addModel(new Identifier(MOD_ID, "block/"+wax.wax+"_block"),jsonParser.parse((blockmodel.replace("ERROR","block"))));
-			modelStates.addModel(new Identifier(MOD_ID, "block/"+wax.wax+"_wax"+"_bricks"),jsonParser.parse((blockmodel.replace("ERROR","bricks"))));
-			modelStates.addModel(new Identifier(MOD_ID, "block/"+wax.wax+"_wax"+"_cut_block"),jsonParser.parse((blockmodel.replace("ERROR","cut_block"))));
+			modelStates.addModel(new Identifier(MOD_ID, "block/"+wax.wax+"_wax_block"),jsonParser.parse((blockmodel.replace("ERROR","block"))));
+			modelStates.addModel(new Identifier(MOD_ID, "block/"+wax.wax+"_wax_bricks"),jsonParser.parse((blockmodel.replace("ERROR","bricks"))));
+			modelStates.addModel(new Identifier(MOD_ID, "block/"+wax.wax+"_wax_cut_block"),jsonParser.parse((blockmodel.replace("ERROR","cut_block"))));
 			modelStates.addSimpleItemModel(new Identifier(MOD_ID, "item/"+wax.wax+"_wax"+"_block"),new Identifier(MOD_ID+":block/"+wax.wax+"_wax"+"_block"));
 			modelStates.addSimpleItemModel(new Identifier(MOD_ID, "item/"+wax.wax+"_wax"+"_bricks"),new Identifier(MOD_ID+":block/"+wax.wax+"_wax"+"_bricks"));
 			modelStates.addSimpleItemModel(new Identifier(MOD_ID, "item/"+wax.wax+"_wax"+"_cut_block"),new Identifier(MOD_ID+":block/"+wax.wax+"_wax"+"_cut_block"));
@@ -204,6 +205,27 @@ public class DataGenerator {
 				e.printStackTrace();
 			}
 		});
+		
+		String slabbm = "{\n" +
+				"    \"parent\": \"block/slab\",\n" +
+				"    \"textures\": {\n" +
+				"        \"all\": \""+MOD_ID+":block/NAME\"\n" +
+				"    }\n" +
+				"}";
+		
+		Arrays.stream(GrowthcraftBlocks.Slabs.class.getDeclaredFields()).forEach(field -> {
+					try {
+						modelStates.addState(((BlockDef) field.get(null)).get(),jsonParser.parse("{\n" +
+								"    \"variants\": {\n" +
+								"        \"\": { \"model\": \""+MOD_ID+":block/"+field.getName().toLowerCase(Locale.ROOT)+"\" }\n" +
+								"    }\n" +
+								"}"));
+						modelStates.addModel(new Identifier(MOD_ID,"block/"+field.getName().toLowerCase(Locale.ROOT)),jsonParser.parse((slabbm.replace("NAME",field.getName().toLowerCase(Locale.ROOT)))));
+						modelStates.addSimpleItemModel((Item)((BlockDef) field.get(null)).get().asItem(),new Identifier(MOD_ID,"block/"+field.getName().toLowerCase(Locale.ROOT)));
+					} catch (Exception exception){
+					
+					}
+				});
 		
 		Arrays.stream(GrowthcraftBlocks.Cheeses.class.getDeclaredFields()).forEach(field -> {
 			String cheeseName = field.getName().toLowerCase(Locale.ROOT);

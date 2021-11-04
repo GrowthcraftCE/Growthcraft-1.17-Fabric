@@ -24,6 +24,10 @@ public class CheeseDef extends BlockDef{
 		return curds;
 	}
 	
+	public CheeseDef(BlockDef block, Item slice, Item curds){
+		this(block.get(),slice,curds);
+	}
+	
 	public CheeseDef(Block block, Item slice, Item curds){
 		super(block);
 		this.slice = slice;

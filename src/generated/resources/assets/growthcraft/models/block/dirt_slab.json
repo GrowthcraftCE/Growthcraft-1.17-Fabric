@@ -1,0 +1,6 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "all": "growthcraft:block/dirt_slab"
+  }
+}
