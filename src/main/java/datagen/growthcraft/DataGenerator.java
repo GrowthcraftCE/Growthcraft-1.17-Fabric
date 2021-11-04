@@ -168,7 +168,7 @@ public class DataGenerator {
 		Arrays.stream(GrowthcraftBlocks.Cheeses.class.getDeclaredFields()).forEach(field -> {
 			String cheeseName = field.getName().toLowerCase(Locale.ROOT);
 			try {
-				modelStates.addGeneratedItemModel(((CheeseDef)field.get(null)).get().asItem());
+				modelStates.addGeneratedItemModel(((CheeseDef)field.get(null)).slice().asItem());
 				modelStates.addState(((CheeseDef) field.get(null)).get(), () -> jsonParser.parse("{\n" +
 						"  \"multipart\": [\n" +
 						"    {   \"when\": { \"cheese_state_top\": \"unaged\" },\n" +

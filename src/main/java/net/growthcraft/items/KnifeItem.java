@@ -59,6 +59,6 @@ public class KnifeItem extends SwordItem {
 		if (!finalCut)
 			world.setBlockState(blockPos,preWaxedState.with(slabType == SlabType.BOTTOM ? CHEESE_STATE_BOTTOM : CHEESE_STATE_TOP, nextCutState >= CheeseBlock.CheeseState.values().length ? CheeseBlock.CheeseState.NONE : CheeseBlock.CheeseState.values()[nextCutState]));
 		entity.giveItemStack(new ItemStack(CheeseDef.getCheese(preWaxedState.getBlock()).slice(),4));
-		itemStack.damage(1, player, __->{});
+		stack.damage(1, entity, __->{});
 	}
 }
