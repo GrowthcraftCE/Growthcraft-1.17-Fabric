@@ -37,7 +37,7 @@ public class Growthcraft implements ModInitializer {
 	public static ItemGroup ITEMGROUP = FabricItemGroupBuilder.build(new Identifier(MOD_ID, "item_group"),
 			() -> new ItemStack(GrowthcraftItems.RED_WAX));
 	public static ItemGroup CHEESES = FabricItemGroupBuilder.create(new Identifier(MOD_ID, "cheeses"))
-			.appendItems(Growthcraft::getNBTItems).icon(() -> new ItemStack(GrowthcraftBlocks.Cheeses.CHEDDAR)).build();
+			.appendItems(Growthcraft::getNBTItems).icon(() -> new ItemStack(GrowthcraftBlocks.Cheeses.CHEDDAR.get())).build();
 	
 	public static List<ItemStack> getNBTItems(List<ItemStack> stacks){
 		for (CheeseBlock.CheeseState state : CheeseBlock.CheeseState.values()) {
@@ -64,15 +64,10 @@ public class Growthcraft implements ModInitializer {
 		
 		new DataGenerator().generate();
 		
-		registerPredicateProvider(GrowthcraftBlocks.Cheeses.CHEDDAR.asItem(),"cheese_state");
-		registerPredicateProvider(GrowthcraftBlocks.Cheeses.GORGONZOLA.asItem(),"cheese_state");
-		registerPredicateProvider(GrowthcraftBlocks.Cheeses.EMMENTALER.asItem(),"cheese_state");
-		registerPredicateProvider(GrowthcraftBlocks.Cheeses.MONTEREY.asItem(),"cheese_state");
-		
 		GROWTHCRAFT.info("Including Cheese™");
 	}
 	
-	private void registerPredicateProvider(Item item, String predicate){
+	public static void registerPredicateProvider(Item item, String predicate){
 		FabricModelPredicateProviderRegistry.register(item, new Identifier(predicate), new UnclampedModelPredicateProvider() {
 			@Override
 			public float call(ItemStack itemStack, @Nullable ClientWorld clientWorld, @Nullable LivingEntity livingEntity, int i) {

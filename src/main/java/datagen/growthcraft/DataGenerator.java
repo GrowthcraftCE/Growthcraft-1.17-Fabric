@@ -9,6 +9,7 @@ import net.fabricmc.loader.api.entrypoint.PreLaunchEntrypoint;
 import net.growthcraft.GrowthCraftConstants;
 import net.growthcraft.Growthcraft;
 import net.growthcraft.blocks.CheeseBlock;
+import net.growthcraft.blocks.CheeseDef;
 import net.growthcraft.blocks.GrowthcraftBlocks;
 import net.growthcraft.items.GrowthcraftItems;
 import net.minecraft.block.Block;
@@ -62,7 +63,7 @@ public class DataGenerator {
 		
 		Arrays.stream(GrowthcraftBlocks.Cheeses.class.getDeclaredFields()).forEach(field -> {
 			try {
-				Block cheese = (Block)field.get(null);
+				Block cheese = ((CheeseDef)field.get(null)).get();
 				table.register(cheese,
 						new LootTable.Builder().type(LootContextType.create().build())
 								.pool(
@@ -167,7 +168,8 @@ public class DataGenerator {
 		Arrays.stream(GrowthcraftBlocks.Cheeses.class.getDeclaredFields()).forEach(field -> {
 			String cheeseName = field.getName().toLowerCase(Locale.ROOT);
 			try {
-				modelStates.addState((Block) field.get(null), () -> jsonParser.parse("{\n" +
+				modelStates.addGeneratedItemModel(((CheeseDef)field.get(null)).get().asItem());
+				modelStates.addState(((CheeseDef) field.get(null)).get(), () -> jsonParser.parse("{\n" +
 						"  \"multipart\": [\n" +
 						"    {   \"when\": { \"cheese_state_top\": \"unaged\" },\n" +
 						"      \"apply\": { \"model\": \"growthcraft:block/"+ CheeseBlock.CheeseState.UNAGED.asString().toLowerCase(Locale.ROOT) + "_" + cheeseName+"_top\" }\n" +

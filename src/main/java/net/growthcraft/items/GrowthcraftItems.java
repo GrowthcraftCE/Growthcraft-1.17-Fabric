@@ -20,11 +20,6 @@ public class GrowthcraftItems {
     public static final Item BLACK_WAX = registerItem(new WaxItem(new Item.Settings().group(Growthcraft.ITEMGROUP)).color(DyeColor.BLACK), "black_wax");
     public static final Item YELLOW_WAX = registerItem(new WaxItem(new Item.Settings().group(Growthcraft.ITEMGROUP)).color(DyeColor.YELLOW), "yellow_wax");
     public static final Item CUTTING_KNIFE = registerItem(new KnifeItem(new Item.Settings().group(Growthcraft.ITEMGROUP)), "cutting_knife");
-    public static final Item CHEDDAR_SLICE  = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP).food(new FoodComponent.Builder().hunger(6).saturationModifier(2).build())), "cheddar_slice");
-    public static final Item GORGONZOLA_SLICE  = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP).food(new FoodComponent.Builder().hunger(6).saturationModifier(2).build())), "gorgonzola_slice");
-    public static final Item EMMENTALER_SLICE  = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP).food(new FoodComponent.Builder().hunger(6).saturationModifier(2).build())), "emmentaler_slice");
-    public static final Item MONTEREY_SLICE  = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP).food(new FoodComponent.Builder().hunger(6).saturationModifier(2).build())), "monterey_slice");
-
 
     public static void register(){}
 

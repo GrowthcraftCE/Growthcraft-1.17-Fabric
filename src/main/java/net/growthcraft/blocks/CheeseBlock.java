@@ -163,7 +163,7 @@ public class CheeseBlock extends BlockWithEntity {
 		}
 		
 		public static CheeseState fromStack(ItemStack stack){
-			return CheeseState.values()[MathHelper.clamp(fromStackRaw(stack)-1,0,255)];
+			return CheeseState.values()[MathHelper.clamp(fromStackRaw(stack)+1,0,255)];
 		}
 		
 		public static int fromStackRaw(ItemStack stack){
