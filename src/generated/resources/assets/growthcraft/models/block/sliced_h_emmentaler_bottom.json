@@ -1,8 +1,9 @@
 {
   "parent": "growthcraft:block/sliced_h_bottom",
   "textures": {
-    "bottom": "growthcraft:block/sliced_emmentaler_bottom",
-    "top": "growthcraft:block/sliced_emmentaler_top",
-    "side": "growthcraft:block/sliced_emmentaler_slab_side"
+    "inside": "growthcraft:block/sliced_emmentaler_slab_side",
+    "bottom": "growthcraft:block/aged_emmentaler_bottom",
+    "top": "growthcraft:block/aged_emmentaler_top",
+    "side": "growthcraft:block/aged_emmentaler_slab_side"
   }
 }

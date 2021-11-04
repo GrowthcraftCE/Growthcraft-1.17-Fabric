@@ -93,10 +93,7 @@ public class CheeseBlock extends BlockWithEntity {
 	public CheeseState getPlacementCheeseState(ItemPlacementContext ctx){
 		if (ctx.getStack().hasNbt() && ctx.getStack().getNbt().contains("cheese_state")){
 			int cheeseState = ctx.getStack().getNbt().getInt("cheese_state");
-			return cheeseState == 0 ?
-					CheeseState.UNAGED : cheeseState == 1 ?
-					CheeseState.WAXED : cheeseState == 2 ?
-					CheeseState.AGED : CheeseState.NONE;
+			return CheeseState.values()[cheeseState+1];
 		} else {
 			return CheeseState.UNAGED;
 		}
@@ -138,7 +135,7 @@ public class CheeseBlock extends BlockWithEntity {
 	@Override
 	public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
 		String state = CheeseState.fromStack(stack).name().toLowerCase(Locale.ROOT);
-		tooltip.add(new TranslatableText("cheese_state.growthcraft." + ((state.equals("waxed")&&wax!=null) ? "waxed" : "error")).setStyle(Style.EMPTY.withColor(Formatting.GRAY)));
+		tooltip.add(new TranslatableText("cheese_state.growthcraft." + ((state.equals("waxed") && wax==null) ? "error" : state)).setStyle(Style.EMPTY.withColor(Formatting.GRAY)));
 		super.appendTooltip(stack, world, tooltip, options);
 	}
 	

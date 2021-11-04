@@ -260,8 +260,9 @@ public class DataGenerator {
 						"  ]\n" +
 						"}"));
 				for (SlabType type : SlabType.values()) {
-					String state = np_state.asString().toLowerCase(Locale.ROOT);
-					modelStates.addModel(new Identifier(Growthcraft.MOD_ID, "block/" + state + "_" + cheeseName + "_" + type.toString().toLowerCase(Locale.ROOT)), () -> jsonParser.parse(
+					String nfstate = np_state.asString().toLowerCase(Locale.ROOT);
+					String state = (nfstate.contains("sliced") ? "aged" : nfstate)+"_";
+					modelStates.addModel(new Identifier(Growthcraft.MOD_ID, "block/" + nfstate + "_" + cheeseName + "_" + type.toString().toLowerCase(Locale.ROOT)), () -> jsonParser.parse(
 							"\n" +
 									"{\n" + "  \"parent\": \"" +
 									(
@@ -284,9 +285,10 @@ public class DataGenerator {
 													: "block/slab_top"
 									) + "\",\n" +
 									"  \"textures\": {\n" +
-									"    \"bottom\": \"growthcraft:block/" + state.replace("_hq","").replace("_h","").replace("_q","") + "_" + cheeseName + "_bottom\",\n" +
-									"    \"top\": \"growthcraft:block/" + state.replace("_hq","").replace("_h","").replace("_q","") + "_" + cheeseName + "_top\",\n" +
-									"    \"side\": \"growthcraft:block/" + state.replace("_hq","").replace("_h","").replace("_q","") + "_" + cheeseName + "_slab_side\"\n" +
+									"    \"inside\": \"growthcraft:block/" + "sliced_" + cheeseName + "_slab_side\",\n" +
+									"    \"bottom\": \"growthcraft:block/" + state + cheeseName + "_bottom\",\n" +
+									"    \"top\": \"growthcraft:block/" + state + cheeseName + "_top\",\n" +
+									"    \"side\": \"growthcraft:block/" + state + cheeseName + "_slab_side\"\n" +
 									"  }\n" +
 									"}"
 					));

@@ -5,6 +5,7 @@ import net.growthcraft.Growthcraft;
 import net.minecraft.item.*;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Pair;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.SimpleRegistry;
 
@@ -34,16 +35,18 @@ public class GrowthcraftItems {
     public static Item getWaxItem(DyeColor color){
         return waxes.get(color);
     }
-    private static final HashMap<Milks,Item> milks = registerMilks();
-    private static HashMap<Milks,Item> registerMilks() {
-        HashMap<Milks,Item> map = new HashMap<Milks, Item>();
-        for (Milks milk : Milks.values()){
-            map.put(milk,registerItem(new MilkBucketItem(new Item.Settings().group(Growthcraft.ITEMGROUP)), milk.name().toLowerCase(Locale.ROOT)));
+    private static final HashMap<Pair<Milks,FluidContainerType>,Item> milks = registerMilks();
+    private static HashMap<Pair<Milks,FluidContainerType>,Item> registerMilks() {
+        HashMap<Pair<Milks,FluidContainerType>,Item> map = new HashMap<Pair<Milks,FluidContainerType>,Item>();
+        for (FluidContainerType type : FluidContainerType.values()) {
+            for (Milks milk : Milks.values()) {
+                map.put(new Pair<>(milk, type), registerItem(new MilkBucketItem(new Item.Settings().group(Growthcraft.ITEMGROUP)), (milk.name().toLowerCase(Locale.ROOT)) + "_" + type.name().toLowerCase(Locale.ROOT)));
+            }
         }
         return map;
     }
-    public static Item getMilkItem(Milks milk){
-        return milks.get(milk);
+    public static Item getMilkItem(FluidContainerType type, Milks milk){
+        return milks.get(new Pair<Milks,FluidContainerType>(milk,type));
     }
     /**
      * This is only for data gen. DO NOT USE THIS!
@@ -56,7 +59,7 @@ public class GrowthcraftItems {
      * This is only for data gen. DO NOT USE THIS!
      */
     @Deprecated
-    public static HashMap<Milks, Item> listOfMilks(){
+    public static HashMap<Pair<Milks,FluidContainerType>, Item> listOfMilks(){
         return milks;
     }
     
