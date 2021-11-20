@@ -2,6 +2,7 @@ package net.growthcraft.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.item.Item;
 
 public class BlockDef {
 	protected Block block;
@@ -16,5 +17,9 @@ public class BlockDef {
 	
 	public BlockState getDefault(){
 		return block.getDefaultState();
+	}
+	
+	public Item item() {
+		return block.asItem();
 	}
 }

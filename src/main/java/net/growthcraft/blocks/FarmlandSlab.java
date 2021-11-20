@@ -44,7 +44,7 @@ public class FarmlandSlab extends SlabBlock {
 	}
 	
 	public BlockState getPlacementState(ItemPlacementContext ctx) {
-		return !Objects.requireNonNull(super.getPlacementState(ctx)).canPlaceAt(ctx.getWorld(), ctx.getBlockPos()) ? Blocks.DIRT.getDefaultState() : super.getPlacementState(ctx);
+		return !Objects.requireNonNull(super.getPlacementState(ctx)).canPlaceAt(ctx.getWorld(), ctx.getBlockPos()) ? GrowthcraftBlocks.Slabs.DIRT_SLAB.get().getDefaultState() : super.getPlacementState(ctx);
 	}
 	
 	public boolean hasSidedTransparency(BlockState state) {
@@ -85,7 +85,7 @@ public class FarmlandSlab extends SlabBlock {
 	}
 	
 	public static void setToDirt(BlockState state, World world, BlockPos pos) {
-		world.setBlockState(pos, pushEntitiesUpBeforeBlockChange(state, Blocks.DIRT.getDefaultState(), world, pos));
+		world.setBlockState(pos, pushEntitiesUpBeforeBlockChange(state, GrowthcraftBlocks.Slabs.DIRT_SLAB.get().getDefaultState(), world, pos));
 	}
 	
 	private static boolean hasCrop(BlockView world, BlockPos pos) {

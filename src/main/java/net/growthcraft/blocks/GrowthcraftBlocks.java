@@ -37,6 +37,7 @@ public class GrowthcraftBlocks {
             Item slice = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP).food(new FoodComponent.Builder().hunger(6).saturationModifier(2).build())), id+"_slice");
             Item curds = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP)), id+"_curds");
             CheeseDef def = new CheeseDef(registerBlock(id, new CheeseBlock(FabricBlockSettings.copyOf(Blocks.WHITE_WOOL)).waxedBy(wax)),slice, curds);
+            Growthcraft.CREATIVE_TAB_ITEMS.add(def.item());
             cheeseDefList.add(def);
             registerClientBlock(def);
             return def;
@@ -55,7 +56,6 @@ public class GrowthcraftBlocks {
         if (hasItem) {
             Item item = new BlockItem(block, new Item.Settings().group(Growthcraft.ITEMGROUP));
             SimpleRegistry.register(Registry.ITEM, new Identifier(MOD_ID, id), item);
-            Growthcraft.CREATIVE_TAB_ITEMS.add(item);
         }
         return new BlockDef(SimpleRegistry.register(Registry.BLOCK, new Identifier(MOD_ID,id), block));
     }
