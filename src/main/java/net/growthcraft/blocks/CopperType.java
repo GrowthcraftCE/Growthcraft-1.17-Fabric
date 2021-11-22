@@ -10,6 +10,6 @@ public enum CopperType {
     CUT;
 
     public static CopperType fromBlock(Block block){
-        return block == Blocks.COPPER_BLOCK ? BLOCK : block == Blocks.CUT_COPPER ? CUT : BRICKS;
+        return block == Blocks.COPPER_BLOCK ? BLOCK : block == Blocks.CUT_COPPER ? CUT : block == GrowthcraftBlocks.Singleton.COPPER_BRICKS.get() ? BRICKS : null;
     }
 }

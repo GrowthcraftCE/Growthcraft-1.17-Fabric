@@ -30,7 +30,6 @@ public class WaxItem extends HoneycombItem {
 	
 	@Override
 	public ActionResult useOnBlock(ItemUsageContext context) {
-		super.useOnBlock(context);
 		World world = context.getWorld();
 		BlockPos blockPos = context.getBlockPos();
 		BlockState state = world.getBlockState(blockPos);
@@ -52,12 +51,13 @@ public class WaxItem extends HoneycombItem {
 			} else {
 				for (Triple<Block,DyeColor, CopperType> t : GrowthcraftBlocks.wax_blocks){
 					if (wax == t.getMiddle())
-						if (t.getRight()==CopperType.BLOCK)
+						if (CopperType.fromBlock(world.getBlockState(blockPos).getBlock()) == t.getRight())
 							world.setBlockState(blockPos,t.getLeft().getDefaultState());
 				}
 			}
 		
 		itemStack.decrement(1);
+		super.useOnBlock(context);
 		return ActionResult.success(world.isClient);
 	}
 	

@@ -33,6 +33,7 @@ public class GrowthcraftBlocks {
     }
 
     public static class Singleton{
+        public static final BlockDef COPPER_BRICKS = registerBlock("copper_bricks",new Block(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
         public static final BlockDef SALT_BLOCK = registerBlock("salt_block",new Block(FabricBlockSettings.copyOf(Blocks.STONE)));
         public static final BlockDef SAND_SALT_ORE = registerBlock("sand_salt_ore",new Block(FabricBlockSettings.copyOf(Blocks.SAND)));
         public static final BlockDef GRAVEL_SALT_ORE = registerBlock("gravel_salt_ore",new Block(FabricBlockSettings.copyOf(Blocks.GRAVEL)));

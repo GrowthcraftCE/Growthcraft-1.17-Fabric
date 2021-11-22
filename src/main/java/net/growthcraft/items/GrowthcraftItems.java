@@ -40,7 +40,7 @@ public class GrowthcraftItems {
             map.put(color,(WaxItem) registerItem(new WaxItem(new Item.Settings().group(Growthcraft.ITEMGROUP)).color(color), color.asString().toLowerCase(Locale.ROOT)+"_wax"));
             GrowthcraftBlocks.registerBlock(color.asString().toLowerCase(Locale.ROOT)+"_wax_block",addWaxBlock(new Block(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)),color,CopperType.BLOCK));
             GrowthcraftBlocks.registerBlock(color.asString().toLowerCase(Locale.ROOT)+"_wax_bricks",addWaxBlock(new Block(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)),color,CopperType.BRICKS));
-            GrowthcraftBlocks.registerBlock(color.asString().toLowerCase(Locale.ROOT)+"_wax_cut_block",addWaxBlock(new Block(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)),color,CopperType.BRICKS));
+            GrowthcraftBlocks.registerBlock(color.asString().toLowerCase(Locale.ROOT)+"_wax_cut_block",addWaxBlock(new Block(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)),color,CopperType.CUT));
         }
         return map;
     }
