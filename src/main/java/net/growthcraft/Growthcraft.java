@@ -4,6 +4,7 @@ import datagen.growthcraft.DataGenerator;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
+import net.fabricmc.fabric.impl.blockrenderlayer.BlockRenderLayerMapImpl;
 import net.fabricmc.fabric.mixin.object.builder.ModelPredicateProviderRegistryAccessor;
 import net.growthcraft.blocks.CheeseBlock;
 import net.growthcraft.blocks.GrowthcraftBlocks;
@@ -11,6 +12,7 @@ import net.growthcraft.items.GrowthcraftItems;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.client.item.UnclampedModelPredicateProvider;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
@@ -63,10 +65,14 @@ public class Growthcraft implements ModInitializer {
 		GrowthcraftBlocks.register();
 		
 		new DataGenerator().generate();
-		
+
+		// TODO: Move to GrowthcraftClient
+		BlockRenderLayerMapImpl.INSTANCE.putBlock(GrowthcraftBlocks.Custom.GRAPE_LEAVES.get(), RenderLayer.getCutout());
+
 		GROWTHCRAFT.info("Including Cheese™");
 	}
-	
+
+	// TODO: Add @OnlyIn fabric alternative to avoid dedicated servers crash
 	public static void registerPredicateProvider(Item item, String predicate){
 		FabricModelPredicateProviderRegistry.register(item, new Identifier(predicate), new UnclampedModelPredicateProvider() {
 			@Override
