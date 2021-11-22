@@ -22,4 +22,8 @@ public class BlockDef {
 	public Item item() {
 		return block.asItem();
 	}
+
+	public void init(){
+		get();
+	}
 }

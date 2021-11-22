@@ -1,6 +1,7 @@
 package net.growthcraft.blocks;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.loader.util.sat4j.core.ConstrGroup;
 import net.growthcraft.Growthcraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -12,6 +13,7 @@ import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.SimpleRegistry;
+import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +23,15 @@ import static net.growthcraft.items.GrowthcraftItems.registerItem;
 
 public class GrowthcraftBlocks {
     public static List<CheeseDef> cheeseDefList = new ArrayList<>();
-    
+    public static List<Triple<Block,DyeColor,CopperType>> wax_blocks = new ArrayList<>();
+
+    public static class Singleton{
+        public static final BlockDef SALT_BLOCK = registerBlock("salt_block",new Block(FabricBlockSettings.copyOf(Blocks.STONE)));
+        public static final BlockDef SAND_SALT_ORE = registerBlock("sand_salt_ore",new Block(FabricBlockSettings.copyOf(Blocks.SAND)));
+        public static final BlockDef GRAVEL_SALT_ORE = registerBlock("gravel_salt_ore",new Block(FabricBlockSettings.copyOf(Blocks.GRAVEL)));
+        public static final BlockDef SALT_ORE = registerBlock("salt_ore",new Block(FabricBlockSettings.copyOf(Blocks.STONE)));
+        public static final BlockDef DEEPSLATE_SALT_ORE = registerBlock("deepslate_salt_ore",new Block(FabricBlockSettings.copyOf(Blocks.DEEPSLATE)));
+    }
     public static class Slabs{
         public static final BlockDef DIRT_SLAB = registerBlock("dirt_slab",new SlabBlock(FabricBlockSettings.copyOf(Blocks.DIRT)));
         public static final BlockDef FARMLAND_SLAB = registerBlock("farmland_slab",new FarmlandSlab(FabricBlockSettings.copyOf(Blocks.FARMLAND)));
@@ -60,5 +70,7 @@ public class GrowthcraftBlocks {
         return new BlockDef(SimpleRegistry.register(Registry.BLOCK, new Identifier(MOD_ID,id), block));
     }
 
-    public static void register(){}
+    public static void register(){
+        Singleton.DEEPSLATE_SALT_ORE.init();
+    }
 }

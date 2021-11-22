@@ -212,7 +212,8 @@ public class DataGenerator {
 				"        \"all\": \""+MOD_ID+":block/NAME\"\n" +
 				"    }\n" +
 				"}";
-		
+
+		// Slabs
 		Arrays.stream(GrowthcraftBlocks.Slabs.class.getDeclaredFields()).forEach(field -> {
 					try {
 						modelStates.addState(((BlockDef) field.get(null)).get(),jsonParser.parse("{\n" +
@@ -226,6 +227,27 @@ public class DataGenerator {
 					
 					}
 				});
+
+		// Singleton
+		String blockmodel = "{\n" +
+				"    \"parent\": \"block/cube_all\",\n" +
+				"    \"textures\": {\n" +
+				"        \"all\": \""+MOD_ID+":block/NAME"+"\"\n" +
+				"    }\n" +
+				"}";
+		Arrays.stream(GrowthcraftBlocks.Singleton.class.getDeclaredFields()).forEach(field -> {
+			try {
+				modelStates.addState(((BlockDef) field.get(null)).get(),jsonParser.parse("{\n" +
+						"    \"variants\": {\n" +
+						"        \"\": { \"model\": \""+MOD_ID+":block/"+field.getName().toLowerCase(Locale.ROOT)+"\" }\n" +
+						"    }\n" +
+						"}"));
+				modelStates.addModel(new Identifier(MOD_ID,"block/"+field.getName().toLowerCase(Locale.ROOT)),jsonParser.parse((blockmodel.replace("NAME",field.getName().toLowerCase(Locale.ROOT)))));
+				modelStates.addSimpleItemModel((Item)((BlockDef) field.get(null)).get().asItem(),new Identifier(MOD_ID,"block/"+field.getName().toLowerCase(Locale.ROOT)));
+			} catch (Exception exception){
+
+			}
+		});
 		
 		Arrays.stream(GrowthcraftBlocks.Cheeses.class.getDeclaredFields()).forEach(field -> {
 			String cheeseName = field.getName().toLowerCase(Locale.ROOT);

@@ -3,6 +3,7 @@ package net.growthcraft.items;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.growthcraft.GrowthCraftConstants;
 import net.growthcraft.Growthcraft;
+import net.growthcraft.blocks.CopperType;
 import net.growthcraft.blocks.GrowthcraftBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -12,6 +13,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.SimpleRegistry;
+import org.apache.commons.lang3.tuple.Triple;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -35,12 +37,18 @@ public class GrowthcraftItems {
         HashMap<DyeColor,WaxItem> map = new HashMap<DyeColor, WaxItem>();
         for (DyeColor color : DyeColor.values()){
             map.put(color,(WaxItem) registerItem(new WaxItem(new Item.Settings().group(Growthcraft.ITEMGROUP)).color(color), color.asString().toLowerCase(Locale.ROOT)+"_wax"));
-            GrowthcraftBlocks.registerBlock(color.asString().toLowerCase(Locale.ROOT)+"_wax_block",new Block(FabricBlockSettings.copyOf(Blocks.HONEYCOMB_BLOCK)));
-            GrowthcraftBlocks.registerBlock(color.asString().toLowerCase(Locale.ROOT)+"_wax_bricks",new Block(FabricBlockSettings.copyOf(Blocks.HONEYCOMB_BLOCK)));
-            GrowthcraftBlocks.registerBlock(color.asString().toLowerCase(Locale.ROOT)+"_wax_cut_block",new Block(FabricBlockSettings.copyOf(Blocks.HONEYCOMB_BLOCK)));
+            GrowthcraftBlocks.registerBlock(color.asString().toLowerCase(Locale.ROOT)+"_wax_block",addWaxBlock(new Block(FabricBlockSettings.copyOf(Blocks.HONEYCOMB_BLOCK)),color,CopperType.BLOCK));
+            GrowthcraftBlocks.registerBlock(color.asString().toLowerCase(Locale.ROOT)+"_wax_bricks",addWaxBlock(new Block(FabricBlockSettings.copyOf(Blocks.HONEYCOMB_BLOCK)),color,CopperType.BRICKS));
+            GrowthcraftBlocks.registerBlock(color.asString().toLowerCase(Locale.ROOT)+"_wax_cut_block",addWaxBlock(new Block(FabricBlockSettings.copyOf(Blocks.HONEYCOMB_BLOCK)),color,CopperType.BRICKS));
         }
         return map;
     }
+
+    private static Block addWaxBlock(Block block, DyeColor color, CopperType copperType) {
+        GrowthcraftBlocks.wax_blocks.add(Triple.of(block,color,copperType));
+        return block;
+    }
+
     public static Item getWaxItem(DyeColor color){
         return waxes.get(color);
     }
