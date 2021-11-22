@@ -172,21 +172,22 @@ public class DataGenerator {
 					"        \"all\": \""+MOD_ID+":block/"+wax.wax+"_wax"+"_ERROR"+"\"\n" +
 					"    }\n" +
 					"}";
-			modelStates.addState(new Identifier(MOD_ID, wax.wax+"_wax"+"_block"),jsonParser.parse("{\n" +
-					"    \"variants\": {\n" +
-					"        \"\": { \"model\": \""+MOD_ID+":block/"+ wax.wax+"_wax"+"_block"+"\" }\n" +
-					"    }\n" +
-					"}"));
 			modelStates.addState(new Identifier(MOD_ID, wax.wax+"_wax"+"_bricks"),jsonParser.parse("{\n" +
 					"    \"variants\": {\n" +
 					"        \"\": { \"model\": \""+MOD_ID+":block/"+ wax.wax+"_wax"+"_bricks"+"\" }\n" +
 					"    }\n" +
 					"}"));
-			modelStates.addState(new Identifier(MOD_ID, wax.wax+"_wax"+"_block"),jsonParser.parse("{\n" +
+			modelStates.addState(new Identifier(MOD_ID, wax.wax+"_wax"+"_cut_block"),jsonParser.parse("{\n" +
 					"    \"variants\": {\n" +
 					"        \"\": { \"model\": \""+MOD_ID+":block/"+ wax.wax+"_wax"+"_cut_block"+"\" }\n" +
 					"    }\n" +
 					"}"));
+			modelStates.addState(new Identifier(MOD_ID, wax.wax+"_wax"+"_block"),jsonParser.parse("{\n" +
+					"    \"variants\": {\n" +
+					"        \"\": { \"model\": \""+MOD_ID+":block/"+ wax.wax+"_wax"+"_block"+"\" }\n" +
+					"    }\n" +
+					"}"));
+
 			modelStates.addModel(new Identifier(MOD_ID, "block/"+wax.wax+"_wax_block"),jsonParser.parse((blockmodel.replace("ERROR","block"))));
 			modelStates.addModel(new Identifier(MOD_ID, "block/"+wax.wax+"_wax_bricks"),jsonParser.parse((blockmodel.replace("ERROR","bricks"))));
 			modelStates.addModel(new Identifier(MOD_ID, "block/"+wax.wax+"_wax_cut_block"),jsonParser.parse((blockmodel.replace("ERROR","cut_block"))));
@@ -205,28 +206,6 @@ public class DataGenerator {
 				e.printStackTrace();
 			}
 		});
-		
-		String slabbm = "{\n" +
-				"    \"parent\": \"block/slab\",\n" +
-				"    \"textures\": {\n" +
-				"        \"all\": \""+MOD_ID+":block/NAME\"\n" +
-				"    }\n" +
-				"}";
-
-		// Slabs
-		Arrays.stream(GrowthcraftBlocks.Slabs.class.getDeclaredFields()).forEach(field -> {
-					try {
-						modelStates.addState(((BlockDef) field.get(null)).get(),jsonParser.parse("{\n" +
-								"    \"variants\": {\n" +
-								"        \"\": { \"model\": \""+MOD_ID+":block/"+field.getName().toLowerCase(Locale.ROOT)+"\" }\n" +
-								"    }\n" +
-								"}"));
-						modelStates.addModel(new Identifier("minecraft","block/"+field.getName().toLowerCase(Locale.ROOT)),jsonParser.parse((slabbm.replace("NAME",field.getName().toLowerCase(Locale.ROOT)))));
-						modelStates.addSimpleItemModel((Item)((BlockDef) field.get(null)).get().asItem(),new Identifier(MOD_ID,"block/"+field.getName().toLowerCase(Locale.ROOT)));
-					} catch (Exception exception){
-					
-					}
-				});
 
 		// Singleton
 		String blockmodel = "{\n" +
@@ -248,7 +227,16 @@ public class DataGenerator {
 
 			}
 		});
-		
+
+		// Custom
+		Arrays.stream(GrowthcraftBlocks.Custom.class.getDeclaredFields()).forEach(field -> {
+			try {
+				modelStates.addSimpleItemModel((Item)((BlockDef) field.get(null)).get().asItem(),new Identifier(MOD_ID,"block/"+field.getName().toLowerCase(Locale.ROOT)));
+			} catch (Exception exception){
+
+			}
+		});
+
 		Arrays.stream(GrowthcraftBlocks.Cheeses.class.getDeclaredFields()).forEach(field -> {
 			String cheeseName = field.getName().toLowerCase(Locale.ROOT);
 			try {

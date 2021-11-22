@@ -25,20 +25,23 @@ import static net.growthcraft.items.GrowthcraftItems.registerItem;
 public class GrowthcraftBlocks {
     public static List<CheeseDef> cheeseDefList = new ArrayList<>();
     public static List<Triple<Block,DyeColor,CopperType>> wax_blocks = new ArrayList<>();
-    
+
     public static class Custom{
         public static final BlockDef GRAPE_LEAVES = registerBlock("grape_leaves",new FullConnectingBlock(FabricBlockSettings.copyOf(Blocks.AZALEA_LEAVES)));
+        public static final BlockDef DIRT_SLAB = registerBlock("dirt_slab",new SlabBlock(FabricBlockSettings.copyOf(Blocks.DIRT)));
+        public static final BlockDef RICE_PAD = registerBlock("rice_pad",new FarmlandSlab(FabricBlockSettings.copyOf(Blocks.FARMLAND)));
     }
+
     public static class Singleton{
         public static final BlockDef SALT_BLOCK = registerBlock("salt_block",new Block(FabricBlockSettings.copyOf(Blocks.STONE)));
         public static final BlockDef SAND_SALT_ORE = registerBlock("sand_salt_ore",new Block(FabricBlockSettings.copyOf(Blocks.SAND)));
         public static final BlockDef GRAVEL_SALT_ORE = registerBlock("gravel_salt_ore",new Block(FabricBlockSettings.copyOf(Blocks.GRAVEL)));
         public static final BlockDef SALT_ORE = registerBlock("salt_ore",new Block(FabricBlockSettings.copyOf(Blocks.STONE)));
         public static final BlockDef DEEPSLATE_SALT_ORE = registerBlock("deepslate_salt_ore",new Block(FabricBlockSettings.copyOf(Blocks.DEEPSLATE)));
+        public static final BlockDef RICE = registerBlock("rice",new RiceCropBlock(FabricBlockSettings.copyOf(Blocks.DIRT)));
     }
+
     public static class Slabs{
-        public static final BlockDef DIRT_SLAB = registerBlock("dirt_slab",new SlabBlock(FabricBlockSettings.copyOf(Blocks.DIRT)));
-        public static final BlockDef FARMLAND_SLAB = registerBlock("farmland_slab",new FarmlandSlab(FabricBlockSettings.copyOf(Blocks.FARMLAND)));
     }
     public static class Cheeses{
         // Add cheese here:
@@ -73,9 +76,10 @@ public class GrowthcraftBlocks {
         }
         return new BlockDef(SimpleRegistry.register(Registry.BLOCK, new Identifier(MOD_ID,id), block));
     }
-    
+
     public static void register(){
         // Initialize one block from inner class to initialize all of them.
+        Singleton.RICE.init();
         Singleton.DEEPSLATE_SALT_ORE.init();
         Custom.GRAPE_LEAVES.init();
     }

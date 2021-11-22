@@ -1,6 +1,0 @@
-{
-  "parent": "block/slab",
-  "textures": {
-    "all": "growthcraft:block/farmland_slab"
-  }
-}

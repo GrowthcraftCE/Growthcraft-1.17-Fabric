@@ -1,9 +1,10 @@
 {
 	"credit": "Made with Blockbench",
+	"parent": "block/block",
 	"textures": {
-		"1": "unknown289",
-		"2": "ropee",
-		"particle": "unknown161"
+		"1": "growthcraft:block/grape_leaves",
+		"2": "growthcraft:block/rope_grape_leaves",
+		"particle": "growthcraft:block/grape_leaves"
 	},
 	"elements": [
 		{

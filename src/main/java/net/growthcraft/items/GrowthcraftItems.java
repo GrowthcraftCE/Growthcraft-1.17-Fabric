@@ -24,6 +24,7 @@ public class GrowthcraftItems {
     public static class Singleton{
         public static final Item CUTTING_KNIFE = registerItem(new KnifeItem(new Item.Settings().group(Growthcraft.ITEMGROUP)), "cutting_knife");
         public static final Item CROWBAR = registerItem(new KnifeItem(new Item.Settings().group(Growthcraft.ITEMGROUP)), "crowbar");
+        public static final Item RICE_SEEDS = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP)), "rice_seeds");
     }
     private enum Milks{
         // Here add milk
@@ -37,9 +38,9 @@ public class GrowthcraftItems {
         HashMap<DyeColor,WaxItem> map = new HashMap<DyeColor, WaxItem>();
         for (DyeColor color : DyeColor.values()){
             map.put(color,(WaxItem) registerItem(new WaxItem(new Item.Settings().group(Growthcraft.ITEMGROUP)).color(color), color.asString().toLowerCase(Locale.ROOT)+"_wax"));
-            GrowthcraftBlocks.registerBlock(color.asString().toLowerCase(Locale.ROOT)+"_wax_block",addWaxBlock(new Block(FabricBlockSettings.copyOf(Blocks.HONEYCOMB_BLOCK)),color,CopperType.BLOCK));
-            GrowthcraftBlocks.registerBlock(color.asString().toLowerCase(Locale.ROOT)+"_wax_bricks",addWaxBlock(new Block(FabricBlockSettings.copyOf(Blocks.HONEYCOMB_BLOCK)),color,CopperType.BRICKS));
-            GrowthcraftBlocks.registerBlock(color.asString().toLowerCase(Locale.ROOT)+"_wax_cut_block",addWaxBlock(new Block(FabricBlockSettings.copyOf(Blocks.HONEYCOMB_BLOCK)),color,CopperType.BRICKS));
+            GrowthcraftBlocks.registerBlock(color.asString().toLowerCase(Locale.ROOT)+"_wax_block",addWaxBlock(new Block(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)),color,CopperType.BLOCK));
+            GrowthcraftBlocks.registerBlock(color.asString().toLowerCase(Locale.ROOT)+"_wax_bricks",addWaxBlock(new Block(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)),color,CopperType.BRICKS));
+            GrowthcraftBlocks.registerBlock(color.asString().toLowerCase(Locale.ROOT)+"_wax_cut_block",addWaxBlock(new Block(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)),color,CopperType.BRICKS));
         }
         return map;
     }

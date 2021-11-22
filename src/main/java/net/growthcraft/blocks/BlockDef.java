@@ -23,7 +23,7 @@ public class BlockDef {
 		return block.asItem();
 	}
 
-	public void init(){
+    public void init() {
 		get();
-	}
+    }
 }

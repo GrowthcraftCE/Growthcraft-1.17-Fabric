@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "growthcraft:block/red_wax_cut_block"
+      "model": "growthcraft:block/red_wax_block"
     }
   }
 }
