@@ -221,7 +221,7 @@ public class DataGenerator {
 								"        \"\": { \"model\": \""+MOD_ID+":block/"+field.getName().toLowerCase(Locale.ROOT)+"\" }\n" +
 								"    }\n" +
 								"}"));
-						modelStates.addModel(new Identifier(MOD_ID,"block/"+field.getName().toLowerCase(Locale.ROOT)),jsonParser.parse((slabbm.replace("NAME",field.getName().toLowerCase(Locale.ROOT)))));
+						modelStates.addModel(new Identifier("minecraft","block/"+field.getName().toLowerCase(Locale.ROOT)),jsonParser.parse((slabbm.replace("NAME",field.getName().toLowerCase(Locale.ROOT)))));
 						modelStates.addSimpleItemModel((Item)((BlockDef) field.get(null)).get().asItem(),new Identifier(MOD_ID,"block/"+field.getName().toLowerCase(Locale.ROOT)));
 					} catch (Exception exception){
 					
