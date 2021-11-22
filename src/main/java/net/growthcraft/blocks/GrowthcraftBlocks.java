@@ -5,6 +5,7 @@ import net.fabricmc.loader.util.sat4j.core.ConstrGroup;
 import net.growthcraft.Growthcraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.ChorusPlantBlock;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.FoodComponent;
@@ -24,7 +25,10 @@ import static net.growthcraft.items.GrowthcraftItems.registerItem;
 public class GrowthcraftBlocks {
     public static List<CheeseDef> cheeseDefList = new ArrayList<>();
     public static List<Triple<Block,DyeColor,CopperType>> wax_blocks = new ArrayList<>();
-
+    
+    public static class Custom{
+        public static final BlockDef GRAPE_LEAVES = registerBlock("grape_leaves",new FullConnectingBlock(FabricBlockSettings.copyOf(Blocks.AZALEA_LEAVES)));
+    }
     public static class Singleton{
         public static final BlockDef SALT_BLOCK = registerBlock("salt_block",new Block(FabricBlockSettings.copyOf(Blocks.STONE)));
         public static final BlockDef SAND_SALT_ORE = registerBlock("sand_salt_ore",new Block(FabricBlockSettings.copyOf(Blocks.SAND)));
@@ -69,8 +73,10 @@ public class GrowthcraftBlocks {
         }
         return new BlockDef(SimpleRegistry.register(Registry.BLOCK, new Identifier(MOD_ID,id), block));
     }
-
+    
     public static void register(){
+        // Initialize one block from inner class to initialize all of them.
         Singleton.DEEPSLATE_SALT_ORE.init();
+        Custom.GRAPE_LEAVES.init();
     }
 }
