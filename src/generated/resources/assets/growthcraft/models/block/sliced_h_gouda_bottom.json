@@ -1,0 +1,9 @@
+{
+  "parent": "growthcraft:block/sliced_h_bottom",
+  "textures": {
+    "inside": "growthcraft:block/sliced_gouda_slab_side",
+    "bottom": "growthcraft:block/aged_gouda_bottom",
+    "top": "growthcraft:block/aged_gouda_top",
+    "side": "growthcraft:block/aged_gouda_slab_side"
+  }
+}

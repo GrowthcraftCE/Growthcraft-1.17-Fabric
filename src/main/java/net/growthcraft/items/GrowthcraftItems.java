@@ -23,7 +23,7 @@ import static net.growthcraft.Growthcraft.MOD_ID;
 public class GrowthcraftItems {
     public static class Singleton{
         public static final Item CUTTING_KNIFE = registerItem(new KnifeItem(new Item.Settings().group(Growthcraft.ITEMGROUP)), "cutting_knife");
-        public static final Item CROWBAR = registerItem(new KnifeItem(new Item.Settings().group(Growthcraft.ITEMGROUP)), "crowbar");
+        public static final Item CROWBAR = registerItem(new CrowbarItem(new Item.Settings().group(Growthcraft.ITEMGROUP)), "crowbar");
         public static final Item RICE_SEEDS = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP)), "rice_seeds");
     }
     private enum Milks{

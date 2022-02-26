@@ -1,0 +1,9 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "inside": "growthcraft:block/sliced_gouda_slab_side",
+    "bottom": "growthcraft:block/waxed_gouda_bottom",
+    "top": "growthcraft:block/waxed_gouda_top",
+    "side": "growthcraft:block/waxed_gouda_slab_side"
+  }
+}

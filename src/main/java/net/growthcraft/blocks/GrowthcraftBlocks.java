@@ -50,6 +50,12 @@ public class GrowthcraftBlocks {
         public static final CheeseDef GORGONZOLA = addCheese("gorgonzola", null);
         public static final CheeseDef EMMENTALER = addCheese("emmentaler", null);
         public static final CheeseDef MONTEREY = addCheese("monterey", DyeColor.BLACK);
+        public static final CheeseDef APPLEZELLER = addCheese("applezeller", null);
+        public static final CheeseDef ASIAGO = addCheese("asiago", null);
+        public static final CheeseDef GOUDA = addCheese("gouda", DyeColor.YELLOW);
+        public static final CheeseDef PARMESAN = addCheese("parmesan", DyeColor.BROWN);
+        public static final CheeseDef PROVOLONE = addCheese("provolone", DyeColor.WHITE);
+        public static final CheeseDef CASU_MARZU = addCheese("casu_marzu", null);
     
         private static CheeseDef addCheese(String id, DyeColor wax) {
             Item slice = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP).food(new FoodComponent.Builder().hunger(6).saturationModifier(2).build())), id+"_slice");

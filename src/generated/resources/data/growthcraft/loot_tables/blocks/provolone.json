@@ -1,0 +1,146 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "growthcraft:provolone",
+                  "properties": {
+                    "cheese_state_bottom": "waxed",
+                    "cheese_state_top": "none"
+                  }
+                }
+              ],
+              "tag": "{cheese_state:1}"
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "growthcraft:provolone",
+                  "properties": {
+                    "cheese_state_bottom": "none",
+                    "cheese_state_top": "waxed"
+                  }
+                }
+              ],
+              "tag": "{cheese_state:1}"
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "growthcraft:provolone",
+                  "properties": {
+                    "cheese_state_bottom": "waxed",
+                    "cheese_state_top": "waxed"
+                  }
+                }
+              ],
+              "tag": "{cheese_state:1}"
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "growthcraft:provolone",
+                  "properties": {
+                    "cheese_state_bottom": "aged",
+                    "cheese_state_top": "none"
+                  }
+                }
+              ],
+              "tag": "{cheese_state:2}"
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "growthcraft:provolone",
+                  "properties": {
+                    "cheese_state_bottom": "none",
+                    "cheese_state_top": "aged"
+                  }
+                }
+              ],
+              "tag": "{cheese_state:2}"
+            },
+            {
+              "function": "minecraft:set_nbt",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "growthcraft:provolone",
+                  "properties": {
+                    "cheese_state_bottom": "aged",
+                    "cheese_state_top": "aged"
+                  }
+                }
+              ],
+              "tag": "{cheese_state:2}"
+            },
+            {
+              "function": "minecraft:set_count",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "growthcraft:provolone",
+                  "properties": {
+                    "cheese_state_bottom": "unaged",
+                    "cheese_state_top": "unaged"
+                  }
+                }
+              ],
+              "count": 2.0,
+              "add": false
+            },
+            {
+              "function": "minecraft:set_count",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "growthcraft:provolone",
+                  "properties": {
+                    "cheese_state_bottom": "waxed",
+                    "cheese_state_top": "waxed"
+                  }
+                }
+              ],
+              "count": 2.0,
+              "add": false
+            },
+            {
+              "function": "minecraft:set_count",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "growthcraft:provolone",
+                  "properties": {
+                    "cheese_state_bottom": "aged",
+                    "cheese_state_top": "aged"
+                  }
+                }
+              ],
+              "count": 2.0,
+              "add": false
+            }
+          ],
+          "name": "growthcraft:provolone"
+        }
+      ]
+    }
+  ]
+}

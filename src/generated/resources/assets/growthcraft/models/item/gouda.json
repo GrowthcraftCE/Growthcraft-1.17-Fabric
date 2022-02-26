@@ -1,0 +1,44 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "growthcraft:item/unaged_gouda"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "cheese_state": 0
+      },
+      "model": "growthcraft:item/unaged_gouda"
+    },
+    {
+      "predicate": {
+        "cheese_state": 1
+      },
+      "model": "growthcraft:item/waxed_gouda"
+    },
+    {
+      "predicate": {
+        "cheese_state": 2
+      },
+      "model": "growthcraft:item/aged_gouda"
+    },
+    {
+      "predicate": {
+        "cheese_state": 3
+      },
+      "model": "growthcraft:item/sliced_gouda"
+    },
+    {
+      "predicate": {
+        "cheese_state": 4
+      },
+      "model": "growthcraft:item/sliced_gouda"
+    },
+    {
+      "predicate": {
+        "cheese_state": 5
+      },
+      "model": "growthcraft:item/sliced_gouda"
+    }
+  ]
+}

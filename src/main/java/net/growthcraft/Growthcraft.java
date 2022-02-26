@@ -1,6 +1,8 @@
 package net.growthcraft;
 
 import datagen.growthcraft.DataGenerator;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
@@ -71,8 +73,8 @@ public class Growthcraft implements ModInitializer {
 
 		GROWTHCRAFT.info("Including Cheese™");
 	}
-
-	// TODO: Add @OnlyIn fabric alternative to avoid dedicated servers crash
+	
+	@Environment(EnvType.CLIENT)
 	public static void registerPredicateProvider(Item item, String predicate){
 		FabricModelPredicateProviderRegistry.register(item, new Identifier(predicate), new UnclampedModelPredicateProvider() {
 			@Override

@@ -1,0 +1,9 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "inside": "growthcraft:block/sliced_parmesan_slab_side",
+    "bottom": "growthcraft:block/aged_parmesan_bottom",
+    "top": "growthcraft:block/aged_parmesan_top",
+    "side": "growthcraft:block/aged_parmesan_slab_side"
+  }
+}
