@@ -25,6 +25,12 @@ public class GrowthcraftItems {
         public static final Item CUTTING_KNIFE = registerItem(new KnifeItem(new Item.Settings().group(Growthcraft.ITEMGROUP)), "cutting_knife");
         public static final Item CROWBAR = registerItem(new CrowbarItem(new Item.Settings().group(Growthcraft.ITEMGROUP)), "crowbar");
         public static final Item RICE_SEEDS = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP)), "rice_seeds");
+        public static final Item CLOTH = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP)), "cloth");
+        public static final Item BUTTER = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP)), "butter");
+        public static final Item ROPE = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP)), "rope");
+        public static final Item SALT_CRYSTAL = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP)), "salt_crystal");
+        public static final Item RICE = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP)), "rice");
+        public static final Item RICE_FLOUR = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP)), "rice_flour");
     }
     private enum Milks{
         // Here add milk

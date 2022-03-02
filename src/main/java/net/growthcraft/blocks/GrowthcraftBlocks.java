@@ -39,7 +39,7 @@ public class GrowthcraftBlocks {
         public static final BlockDef GRAVEL_SALT_ORE = registerBlock("gravel_salt_ore",new Block(FabricBlockSettings.copyOf(Blocks.GRAVEL)));
         public static final BlockDef SALT_ORE = registerBlock("salt_ore",new Block(FabricBlockSettings.copyOf(Blocks.STONE)));
         public static final BlockDef DEEPSLATE_SALT_ORE = registerBlock("deepslate_salt_ore",new Block(FabricBlockSettings.copyOf(Blocks.DEEPSLATE)));
-        public static final BlockDef RICE = registerBlock("rice",new RiceCropBlock(FabricBlockSettings.copyOf(Blocks.DIRT)));
+        public static final BlockDef RICE = registerBlock("rice_block",new RiceCropBlock(FabricBlockSettings.copyOf(Blocks.DIRT)));
     }
 
     public static class Slabs{
@@ -56,7 +56,7 @@ public class GrowthcraftBlocks {
         public static final CheeseDef PARMESAN = addCheese("parmesan", DyeColor.BROWN);
         public static final CheeseDef PROVOLONE = addCheese("provolone", DyeColor.WHITE);
         public static final CheeseDef CASU_MARZU = addCheese("casu_marzu", null);
-    
+        
         private static CheeseDef addCheese(String id, DyeColor wax) {
             Item slice = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP).food(new FoodComponent.Builder().hunger(6).saturationModifier(2).build())), id+"_slice");
             Item curds = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP)), id+"_curds");
