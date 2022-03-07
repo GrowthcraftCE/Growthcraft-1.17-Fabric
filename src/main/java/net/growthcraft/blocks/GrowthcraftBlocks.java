@@ -56,7 +56,6 @@ public class GrowthcraftBlocks {
         public static final CheeseDef PARMESAN = addCheese("parmesan", DyeColor.BROWN);
         public static final CheeseDef PROVOLONE = addCheese("provolone", DyeColor.WHITE);
         public static final CheeseDef CASU_MARZU = addCheese("casu_marzu", null);
-        public static final CheeseDef GREG = addCheese("greg", DyeColor.RED);
         
         private static CheeseDef addCheese(String id, DyeColor wax) {
             Item slice = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP).food(new FoodComponent.Builder().hunger(6).saturationModifier(2).build())), id+"_slice");

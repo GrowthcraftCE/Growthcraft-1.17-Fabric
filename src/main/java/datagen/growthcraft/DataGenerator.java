@@ -327,6 +327,7 @@ public class DataGenerator {
 				for (SlabType type : SlabType.values()) {
 					String nfstate = np_state.asString().toLowerCase(Locale.ROOT);
 					String state = (nfstate.contains("sliced") ? "aged" : nfstate)+"_";
+					String uastate = (state.contains("waxed") ? "aged_" : state);
 					modelStates.addModel(new Identifier(MOD_ID, "block/" + nfstate + "_" + cheeseName + "_" + type.toString().toLowerCase(Locale.ROOT)), () -> jsonParser.parse(
 							"\n" +
 									"{\n" + "  \"parent\": \"" +
@@ -351,9 +352,9 @@ public class DataGenerator {
 									) + "\",\n" +
 									"  \"textures\": {\n" +
 									"    \"inside\": \"growthcraft:block/" + "sliced_" + cheeseName + "_slab_side\",\n" +
-									"    \"bottom\": \"growthcraft:block/" + state + cheeseName + "_bottom\",\n" +
-									"    \"top\": \"growthcraft:block/" + state + cheeseName + "_top\",\n" +
-									"    \"side\": \"growthcraft:block/" + state + cheeseName + "_slab_side\"\n" +
+									"    \"bottom\": \"growthcraft:block/" + uastate + cheeseName + "_bottom\",\n" +
+									"    \"top\": \"growthcraft:block/" + uastate + cheeseName + "_top\",\n" +
+									"    \"side\": \"growthcraft:block/" + uastate + cheeseName + "_slab_side\"\n" +
 									"  }\n" +
 									"}"
 					));

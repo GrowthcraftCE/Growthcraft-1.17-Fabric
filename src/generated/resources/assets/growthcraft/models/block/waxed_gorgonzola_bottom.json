@@ -2,8 +2,8 @@
   "parent": "block/slab",
   "textures": {
     "inside": "growthcraft:block/sliced_gorgonzola_slab_side",
-    "bottom": "growthcraft:block/waxed_gorgonzola_bottom",
-    "top": "growthcraft:block/waxed_gorgonzola_top",
-    "side": "growthcraft:block/waxed_gorgonzola_slab_side"
+    "bottom": "growthcraft:block/aged_gorgonzola_bottom",
+    "top": "growthcraft:block/aged_gorgonzola_top",
+    "side": "growthcraft:block/aged_gorgonzola_slab_side"
   }
 }

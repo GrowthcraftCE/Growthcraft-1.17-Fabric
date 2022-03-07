@@ -2,8 +2,8 @@
   "parent": "block/cube_bottom_top",
   "textures": {
     "inside": "growthcraft:block/sliced_provolone_slab_side",
-    "bottom": "growthcraft:block/waxed_provolone_bottom",
-    "top": "growthcraft:block/waxed_provolone_top",
-    "side": "growthcraft:block/waxed_provolone_slab_side"
+    "bottom": "growthcraft:block/aged_provolone_bottom",
+    "top": "growthcraft:block/aged_provolone_top",
+    "side": "growthcraft:block/aged_provolone_slab_side"
   }
 }

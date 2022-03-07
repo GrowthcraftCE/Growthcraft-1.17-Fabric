@@ -2,8 +2,8 @@
   "parent": "block/slab_top",
   "textures": {
     "inside": "growthcraft:block/sliced_monterey_slab_side",
-    "bottom": "growthcraft:block/waxed_monterey_bottom",
-    "top": "growthcraft:block/waxed_monterey_top",
-    "side": "growthcraft:block/waxed_monterey_slab_side"
+    "bottom": "growthcraft:block/aged_monterey_bottom",
+    "top": "growthcraft:block/aged_monterey_top",
+    "side": "growthcraft:block/aged_monterey_slab_side"
   }
 }
