@@ -1,0 +1,9 @@
+{
+  "parent": "growthcraft:block/sliced_h_top",
+  "textures": {
+    "inside": "growthcraft:block/sliced_greg_slab_side",
+    "bottom": "growthcraft:block/aged_greg_bottom",
+    "top": "growthcraft:block/aged_greg_top",
+    "side": "growthcraft:block/aged_greg_slab_side"
+  }
+}

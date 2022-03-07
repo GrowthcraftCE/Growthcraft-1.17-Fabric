@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "growthcraft:item/rice"
+    "layer0": "growthcraft:item/salt_crystal"
   }
 }

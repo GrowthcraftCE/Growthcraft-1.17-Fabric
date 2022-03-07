@@ -338,7 +338,7 @@ public class DataGenerator {
 													: np_state == CheeseBlock.CheeseState.SLICED_H && type == SlabType.BOTTOM
 													? "growthcraft:block/sliced_h_bottom"
 													: np_state == CheeseBlock.CheeseState.SLICED_H && type == SlabType.TOP
-													? "growthcraft:block/sliced_hq_top"
+													? "growthcraft:block/sliced_h_top"
 													: np_state == CheeseBlock.CheeseState.SLICED_Q && type == SlabType.BOTTOM
 													? "growthcraft:block/sliced_q_bottom"
 													: np_state == CheeseBlock.CheeseState.SLICED_Q && type == SlabType.TOP

@@ -1,5 +1,5 @@
 {
-  "parent": "growthcraft:block/sliced_hq_top",
+  "parent": "growthcraft:block/sliced_h_top",
   "textures": {
     "inside": "growthcraft:block/sliced_applezeller_slab_side",
     "bottom": "growthcraft:block/aged_applezeller_bottom",
