@@ -1,7 +1,7 @@
 package net.growthcraft.items;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.growthcraft.GrowthCraftConstants;
+import net.growthcraft.GrowthcraftConstants;
 import net.growthcraft.Growthcraft;
 import net.growthcraft.blocks.CopperType;
 import net.growthcraft.blocks.GrowthcraftBlocks;
@@ -90,12 +90,12 @@ public class GrowthcraftItems {
     public static void register(){}
     
     public static Item registerItem(Item item,String id) {
-        if (GrowthCraftConstants.isGameRunning)
+        if (GrowthcraftConstants.isGameRunning)
             return SimpleRegistry.register(Registry.ITEM, new Identifier(MOD_ID,id), item);
         else return item;
     }
 
     protected static ItemGroup defaultGroup(){
-        if (GrowthCraftConstants.isGameRunning) return Growthcraft.ITEMGROUP; else return null;
+        if (GrowthcraftConstants.isGameRunning) return Growthcraft.ITEMGROUP; else return null;
     }
 }

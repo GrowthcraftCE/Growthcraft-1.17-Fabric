@@ -1,0 +1,11 @@
+{
+    "replace": false,
+    "values": [
+        "#minecraft:fire",
+        "#minecraft:campfires",
+        "#minecraft:strider_warm_blocks",
+        "#minecraft:candles",
+        "#minecraft:lava",
+        "minecraft:magma_block"
+    ]
+}

@@ -1,5 +1,5 @@
 package net.growthcraft;
 
-public class GrowthCraftConstants {
+public class GrowthcraftConstants {
 	public static boolean isGameRunning = true;
 }

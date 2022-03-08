@@ -7,12 +7,9 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
 import net.fabricmc.fabric.impl.blockrenderlayer.BlockRenderLayerMapImpl;
-import net.fabricmc.fabric.mixin.object.builder.ModelPredicateProviderRegistryAccessor;
 import net.growthcraft.blocks.CheeseBlock;
 import net.growthcraft.blocks.GrowthcraftBlocks;
 import net.growthcraft.items.GrowthcraftItems;
-import net.minecraft.block.Blocks;
-import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.client.item.UnclampedModelPredicateProvider;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.world.ClientWorld;
@@ -21,7 +18,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.collection.DefaultedList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
@@ -61,7 +57,7 @@ public class Growthcraft implements ModInitializer {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
-		GrowthCraftConstants.isGameRunning = true;
+		GrowthcraftConstants.isGameRunning = true;
 		
 		GrowthcraftItems.register();
 		GrowthcraftBlocks.register();

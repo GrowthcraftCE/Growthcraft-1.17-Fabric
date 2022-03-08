@@ -3,6 +3,9 @@ package net.growthcraft.blocks;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.loader.util.sat4j.core.ConstrGroup;
 import net.growthcraft.Growthcraft;
+import net.growthcraft.entity.GrowthcraftBlockEntities;
+import net.growthcraft.machines.core.Machine;
+import net.growthcraft.machines.roaster.RoasterMachine;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ChorusPlantBlock;
@@ -30,6 +33,10 @@ public class GrowthcraftBlocks {
         public static final BlockDef GRAPE_LEAVES = registerBlock("grape_leaves",new FullConnectingBlock(FabricBlockSettings.copyOf(Blocks.AZALEA_LEAVES)));
         public static final BlockDef DIRT_SLAB = registerBlock("dirt_slab",new SlabBlock(FabricBlockSettings.copyOf(Blocks.DIRT)));
         public static final BlockDef RICE_PAD = registerBlock("rice_pad",new FarmlandSlab(FabricBlockSettings.copyOf(Blocks.FARMLAND)));
+
+        public static final BlockDef ROASTER = registerBlock("roaster", new RoasterMachine());
+
+        public static final BlockDef BREW_KETTLE = registerBlock("brew_kettle",new Block(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
     }
 
     public static class Singleton{
@@ -70,6 +77,19 @@ public class GrowthcraftBlocks {
         private static void registerClientBlock(CheeseDef def) {
             Growthcraft.registerPredicateProvider(def.get().asItem(),"cheese_state");
         }
+    }
+
+    public static BlockDef registerBlock(String id, Machine machineBlock) {
+        return registerBlock(id,machineBlock,true);
+    }
+
+    public static BlockDef registerBlock(String id, Machine machineBlock, boolean hasItem) {
+        Block createdBlock = machineBlock.createBlock();
+        if (hasItem) {
+            Item item = new BlockItem(createdBlock, new Item.Settings().group(Growthcraft.ITEMGROUP));
+            SimpleRegistry.register(Registry.ITEM, new Identifier(MOD_ID, id), item);
+        }
+        return new BlockDef(machineBlock, SimpleRegistry.register(Registry.BLOCK, new Identifier(MOD_ID,id), createdBlock));
     }
 
     public static BlockDef registerBlock(String id, Block block) {

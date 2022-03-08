@@ -3,9 +3,8 @@ package net.growthcraft.items;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUsageContext;
+import net.minecraft.item.*;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
@@ -15,9 +14,10 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class CrowbarItem extends Item {
+public class CrowbarItem extends MiningToolItem {
 	public CrowbarItem(Settings settings) {
-		super(settings);
+		// TODO: Change BlockTags.PICKAXE_MINEABLE to BlockTags.CROWBAR_MINEABLE when mod ported to 1.18
+		super(1, -2.8F, ToolMaterials.IRON, BlockTags.PICKAXE_MINEABLE,settings);
 	}
 	
 	@Override

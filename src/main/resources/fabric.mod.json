@@ -19,7 +19,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.growthcraft.Growthcraft"
+    	"net.growthcraft.Growthcraft"
+    ],
+    "client": [
+    	"net.growthcraft.GrowthcraftClient"
     ]
   },
   "mixins": [
