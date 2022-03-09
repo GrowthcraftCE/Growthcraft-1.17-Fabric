@@ -17,6 +17,8 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
+import java.util.Random;
+
 public class RoasterMachine extends Machine implements IContainerMachine {
     protected int roastProgress, roastTotal;
     
@@ -28,14 +30,15 @@ public class RoasterMachine extends Machine implements IContainerMachine {
     public BlockEntityType<?> getType() {
         return GrowthcraftBlockEntities.ROASTER_BLOCK_ENTITY;
     }
-
-    @Override
-    public void tick(World world, BlockPos pos, BlockState state, BlockEntity blockEntity) {
+    
+    public static void tick(World world, BlockPos pos, BlockState state, BlockEntity blockEntity) {
         MachineBlockEntity be = (MachineBlockEntity) blockEntity;
-        roastProgress++;
-        /*if (be.machine.propertyDelegate.get(0)<0)
-            be.machine.propertyDelegate.set(0,90);
-        else be.machine.propertyDelegate.set(0,be.machine.propertyDelegate.get(0)-1);*/
+        //roastProgress++;
+        if (be.machine.propertyDelegate.get(0)<0)
+            be.machine.propertyDelegate.set(0,200);
+        else be.machine.propertyDelegate.set(0,be.machine.propertyDelegate.get(0)-1);
+        if (be.machine.propertyDelegate.get(1) == 0)
+            be.machine.propertyDelegate.set(1,new Random().nextInt(10));
     }
 
     @Override

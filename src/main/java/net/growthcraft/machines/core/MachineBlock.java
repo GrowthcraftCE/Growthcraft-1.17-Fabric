@@ -1,6 +1,7 @@
 package net.growthcraft.machines.core;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.growthcraft.machines.roaster.RoasterMachine;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
@@ -43,7 +44,7 @@ public class MachineBlock extends BlockWithEntity {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type,machine.getType(), machine::tick);
+        return checkType(type,machine.getType(), RoasterMachine::tick);
     }
 
     @Override

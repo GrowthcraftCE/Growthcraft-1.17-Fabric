@@ -36,8 +36,9 @@ public abstract class Machine {
     }
 
     public abstract BlockEntityType<?> getType();
-
-    public abstract void tick(World world, BlockPos pos, BlockState state, BlockEntity blockEntity);
+    
+    public static void tick(World world, BlockPos pos, BlockState state, BlockEntity blockEntity) {
+    }
     
     public PropertyDelegate initPropertyDelegate(){
         return null;
