@@ -3,7 +3,9 @@ package net.growthcraft.blocks;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.loader.util.sat4j.core.ConstrGroup;
 import net.growthcraft.Growthcraft;
+import net.growthcraft.IgnoreDatagen;
 import net.growthcraft.entity.GrowthcraftBlockEntities;
+import net.growthcraft.machines.brew_kettle.BrewKettleMachine;
 import net.growthcraft.machines.core.Machine;
 import net.growthcraft.machines.roaster.RoasterMachine;
 import net.minecraft.block.Block;
@@ -30,13 +32,13 @@ public class GrowthcraftBlocks {
     public static List<Triple<Block,DyeColor,CopperType>> wax_blocks = new ArrayList<>();
 
     public static class Custom{
-        public static final BlockDef GRAPE_LEAVES = registerBlock("grape_leaves",new FullConnectingBlock(FabricBlockSettings.copyOf(Blocks.AZALEA_LEAVES)));
+        @IgnoreDatagen public static final BlockDef GRAPE_LEAVES = registerBlock("grape_leaves",new FullConnectingBlock(FabricBlockSettings.copyOf(Blocks.AZALEA_LEAVES)));
         public static final BlockDef DIRT_SLAB = registerBlock("dirt_slab",new SlabBlock(FabricBlockSettings.copyOf(Blocks.DIRT)));
         public static final BlockDef RICE_PAD = registerBlock("rice_pad",new FarmlandSlab(FabricBlockSettings.copyOf(Blocks.FARMLAND)));
 
         public static final BlockDef ROASTER = registerBlock("roaster", new RoasterMachine());
 
-        public static final BlockDef BREW_KETTLE = registerBlock("brew_kettle",new Block(FabricBlockSettings.copyOf(Blocks.COPPER_BLOCK)));
+        @IgnoreDatagen public static final BlockDef BREW_KETTLE = registerBlock("brew_kettle",new BrewKettleMachine());
     }
 
     public static class Singleton{

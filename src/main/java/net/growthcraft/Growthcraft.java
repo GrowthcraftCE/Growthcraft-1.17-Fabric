@@ -11,6 +11,7 @@ import net.growthcraft.blocks.CheeseBlock;
 import net.growthcraft.blocks.GrowthcraftBlocks;
 import net.growthcraft.fluids.GrowthcraftFluids;
 import net.growthcraft.items.GrowthcraftItems;
+import net.minecraft.block.cauldron.CauldronBehavior;
 import net.minecraft.client.item.UnclampedModelPredicateProvider;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.world.ClientWorld;
@@ -18,6 +19,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -63,11 +65,15 @@ public class Growthcraft implements ModInitializer {
 		GrowthcraftItems.register();
 		GrowthcraftBlocks.register();
 		GrowthcraftFluids.register();
-		
-		new DataGenerator().generate();
 
-		// TODO: Move to GrowthcraftClient
-		BlockRenderLayerMapImpl.INSTANCE.putBlock(GrowthcraftBlocks.Custom.GRAPE_LEAVES.get(), RenderLayer.getCutout());
+		GrowthcraftItems.grains.forEach((grainType, item) -> {
+			CauldronBehavior.WATER_CAULDRON_BEHAVIOR.put(item, (state, world, pos, player, hand, stack) -> {
+				world.setBlockState(pos,GrowthcraftBlocks.Custom.BREW_KETTLE.getDefault()); // type
+				return ActionResult.SUCCESS;
+			});
+		});
+
+		new DataGenerator().generate();
 
 		GROWTHCRAFT.info("Including Cheese™");
 	}

@@ -5,6 +5,7 @@ import net.growthcraft.GrowthcraftConstants;
 import net.growthcraft.Growthcraft;
 import net.growthcraft.blocks.CopperType;
 import net.growthcraft.blocks.GrowthcraftBlocks;
+import net.growthcraft.fluids.GrowthcraftFluids;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.*;
@@ -21,6 +22,8 @@ import java.util.Locale;
 import static net.growthcraft.Growthcraft.MOD_ID;
 
 public class GrowthcraftItems {
+    public static final HashMap<GrowthcraftFluids.GrainTypes,Item> grains = new HashMap<>();
+
     public static class Singleton{
         public static final Item CUTTING_KNIFE = registerItem(new KnifeItem(new Item.Settings().group(Growthcraft.ITEMGROUP)), "cutting_knife");
         public static final Item CROWBAR = registerItem(new CrowbarItem(new Item.Settings().group(Growthcraft.ITEMGROUP)), "crowbar");
@@ -31,6 +34,17 @@ public class GrowthcraftItems {
         public static final Item SALT_CRYSTAL = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP)), "salt_crystal");
         public static final Item RICE = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP)), "rice");
         public static final Item RICE_FLOUR = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP)), "rice_flour");
+        public static final Item GRAIN = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP)), "grain");
+
+        public static final Item PALE_GOLDEN_ROASTED_GRAIN = registerItem(new GrainItem(GrowthcraftFluids.GrainTypes.PALE_GOLDEN,new Item.Settings().group(Growthcraft.ITEMGROUP)), "pale_golden_roasted_grain");
+        public static final Item GOLDEN_ROASTED_GRAIN = registerItem(new GrainItem(GrowthcraftFluids.GrainTypes.GOLDEN,new Item.Settings().group(Growthcraft.ITEMGROUP)), "golden_roasted_grain");
+        public static final Item AMBER_ROASTED_GRAIN = registerItem(new GrainItem(GrowthcraftFluids.GrainTypes.AMBER,new Item.Settings().group(Growthcraft.ITEMGROUP)), "amber_roasted_grain");
+        public static final Item DEEP_AMBER_ROASTED_GRAIN = registerItem(new GrainItem(GrowthcraftFluids.GrainTypes.DEEP_AMBER,new Item.Settings().group(Growthcraft.ITEMGROUP)), "deep_amber_roasted_grain");
+        public static final Item COPPER_ROASTED_GRAIN = registerItem(new GrainItem(GrowthcraftFluids.GrainTypes.COPPER,new Item.Settings().group(Growthcraft.ITEMGROUP)), "copper_roasted_grain");
+        public static final Item DEEP_COPPER_ROASTED_GRAIN = registerItem(new GrainItem(GrowthcraftFluids.GrainTypes.DEEP_COPPER,new Item.Settings().group(Growthcraft.ITEMGROUP)), "deep_copper_roasted_grain");
+        public static final Item BROWN_ROASTED_GRAIN = registerItem(new GrainItem(GrowthcraftFluids.GrainTypes.BROWN,new Item.Settings().group(Growthcraft.ITEMGROUP)), "brown_roasted_grain");
+        public static final Item DARK_ROASTED_GRAIN = registerItem(new GrainItem(GrowthcraftFluids.GrainTypes.DARK,new Item.Settings().group(Growthcraft.ITEMGROUP)), "dark_roasted_grain");
+
     }
     private enum Milks{
         // Here add milk

@@ -13,7 +13,7 @@
     "sources": "https://github.com/GrowthcraftCE/Growthcraft-1.17-Fabric"
   },
 
-  "license": "CC0-1.0",
+  "license": "GPL-3.0",
   "icon": "assets/growthcraft/icon.png",
 
   "environment": "*",

@@ -4,6 +4,8 @@ import com.google.gson.JsonParser;
 import me.shedaniel.cloth.api.datagen.v1.DataGeneratorHandler;
 import me.shedaniel.cloth.api.datagen.v1.LootTableData;
 import me.shedaniel.cloth.api.datagen.v1.ModelStateData;
+import net.growthcraft.Growthcraft;
+import net.growthcraft.IgnoreDatagen;
 import net.growthcraft.blocks.BlockDef;
 import net.growthcraft.blocks.CheeseBlock;
 import net.growthcraft.blocks.CheeseDef;
@@ -220,7 +222,8 @@ public class DataGenerator {
 		// Custom
 		Arrays.stream(GrowthcraftBlocks.Custom.class.getDeclaredFields()).forEach(field -> {
 			try {
-				modelStates.addSimpleItemModel((Item)((BlockDef) field.get(null)).get().asItem(),new Identifier(MOD_ID,"block/"+field.getName().toLowerCase(Locale.ROOT)));
+				if (field.getAnnotation(IgnoreDatagen.class)==null)
+					modelStates.addSimpleItemModel((Item)((BlockDef) field.get(null)).get().asItem(),new Identifier(MOD_ID,"block/"+field.getName().toLowerCase(Locale.ROOT)));
 			} catch (Exception exception){
 
 			}
