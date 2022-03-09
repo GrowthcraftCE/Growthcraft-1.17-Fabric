@@ -8,11 +8,11 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-public class BoxScreen extends HandledScreen<BoxScreenHandler> {
+public class RoasterScreen extends HandledScreen<RoasterScreenHandler> {
     //A path to the gui texture. In this example we use the texture from the dispenser
     private static final Identifier TEXTURE = new Identifier("minecraft", "textures/gui/container/dispenser.png");
 
-    public BoxScreen(BoxScreenHandler handler, PlayerInventory inventory, Text title) {
+    public RoasterScreen(RoasterScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
     }
 
@@ -24,6 +24,11 @@ public class BoxScreen extends HandledScreen<BoxScreenHandler> {
         int x = (width - backgroundWidth) / 2;
         int y = (height - backgroundHeight) / 2;
         drawTexture(matrices, x, y, 0, 0, backgroundWidth, backgroundHeight);
+        int l;
+        if (((RoasterScreenHandler)this.handler).isRoasting()) {
+            l = ((RoasterScreenHandler)this.handler).getRoastingProgress();
+            this.drawTexture(matrices, x + 56, y + 36 + 12 - l, 176, 12 - l, 14, l + 1);
+        }
     }
 
     @Override

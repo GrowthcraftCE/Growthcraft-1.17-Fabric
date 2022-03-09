@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class MachineBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
-    private final Machine machine;
+    public final Machine machine;
 
     private final DefaultedList<ItemStack> inventory;
 

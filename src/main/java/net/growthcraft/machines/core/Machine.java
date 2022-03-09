@@ -6,6 +6,8 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.screen.ArrayPropertyDelegate;
+import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -13,6 +15,8 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 public abstract class Machine {
+    public PropertyDelegate propertyDelegate;
+    
     public boolean hasContainer = false;
     public int invSize;
     public String displayName;
@@ -27,12 +31,17 @@ public abstract class Machine {
         if (hasContainer){
             this.hasContainer = true;
             this.invSize = invSize;
+            this.propertyDelegate = this.initPropertyDelegate();
         }
     }
 
     public abstract BlockEntityType<?> getType();
 
     public abstract void tick(World world, BlockPos pos, BlockState state, BlockEntity blockEntity);
+    
+    public PropertyDelegate initPropertyDelegate(){
+        return null;
+    }
 
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new MachineBlockEntity(getType(), pos, state, this);

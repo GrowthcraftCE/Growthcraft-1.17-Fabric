@@ -6,25 +6,30 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.screen.ArrayPropertyDelegate;
+import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 
-public class BoxScreenHandler extends ScreenHandler {
+public class RoasterScreenHandler extends ScreenHandler {
     private final Inventory inventory;
-
+    public final PropertyDelegate propertyDelegate;
+    
     //This constructor gets called on the client when the server wants it to open the screenHandler,
     //The client will call the other constructor with an empty Inventory and the screenHandler will automatically
     //sync this empty inventory with the inventory on the server.
-    public BoxScreenHandler(int syncId, PlayerInventory playerInventory) {
-        this(syncId, playerInventory, new SimpleInventory(3));
+    public RoasterScreenHandler(int syncId, PlayerInventory playerInventory) {
+        this(syncId, playerInventory, new SimpleInventory(3),new ArrayPropertyDelegate(2));
     }
 
     //This constructor gets called from the BlockEntity on the server without calling the other constructor first, the server knows the inventory of the container
     //and can therefore directly provide it as an argument. This inventory will then be synced to the client.
-    public BoxScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory) {
+    public RoasterScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory, PropertyDelegate propertyDelegate) {
         super(GrowthcraftBlockEntities.BOX_SCREEN_HANDLER, syncId);
         checkSize(inventory, 3);
+        checkDataCount(propertyDelegate,2);
         this.inventory = inventory;
+        this.propertyDelegate = propertyDelegate;
         //some inventories do custom logic when a player opens it.
         inventory.onOpen(playerInventory.player);
 
@@ -78,5 +83,13 @@ public class BoxScreenHandler extends ScreenHandler {
         }
 
         return newStack;
+    }
+    
+    public boolean isRoasting() {
+        return propertyDelegate.get(0) > 0;
+    }
+    
+    public int getRoastingProgress() {
+        return propertyDelegate.get(0);
     }
 }

@@ -4,9 +4,8 @@ import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityT
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.growthcraft.Growthcraft;
 import net.growthcraft.blocks.GrowthcraftBlocks;
-import net.growthcraft.machines.core.Machine;
 import net.growthcraft.machines.core.MachineBlockEntity;
-import net.growthcraft.machines.roaster.BoxScreenHandler;
+import net.growthcraft.machines.roaster.RoasterScreenHandler;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
@@ -30,5 +29,5 @@ public class GrowthcraftBlockEntities {
             (p,b)->new MachineBlockEntity(GrowthcraftBlockEntities.CHEESE_BLOCK_ENTITY,p,b,GrowthcraftBlocks.Custom.ROASTER.getMachine().get()),
             GrowthcraftBlocks.Custom.ROASTER.get()
     ).build());
-    public static final ScreenHandlerType<BoxScreenHandler> BOX_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(new Identifier(Growthcraft.MOD_ID+":roaster"), BoxScreenHandler::new);
+    public static final ScreenHandlerType<RoasterScreenHandler> BOX_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(new Identifier(Growthcraft.MOD_ID+":roaster"), RoasterScreenHandler::new);
 }
