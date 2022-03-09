@@ -5,7 +5,7 @@
         "#minecraft:campfires",
         "#minecraft:strider_warm_blocks",
         "#minecraft:candles",
-        "#minecraft:lava",
+        "#c:lava",
         "minecraft:magma_block"
     ]
 }

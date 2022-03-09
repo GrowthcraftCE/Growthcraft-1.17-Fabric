@@ -13,6 +13,8 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -22,6 +24,18 @@ public class MachineBlock extends BlockWithEntity {
     public MachineBlock(Machine machine) {
         super(createBlockSettings());
         this.machine = machine;
+    }
+
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        if (machine.getVoxelShape() != null) return machine.getVoxelShape();
+        return super.getCollisionShape(state, world, pos, context);
+    }
+
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        if (machine.getVoxelShape() != null) return machine.getVoxelShape();
+        return super.getOutlineShape(state, world, pos, context);
     }
 
     private static FabricBlockSettings createBlockSettings(){
@@ -44,7 +58,7 @@ public class MachineBlock extends BlockWithEntity {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type,machine.getType(), RoasterMachine::tick);
+        return checkType(type,machine.getType(), machine::tick);
     }
 
     @Override

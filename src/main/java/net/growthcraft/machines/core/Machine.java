@@ -10,16 +10,15 @@ import net.minecraft.screen.ArrayPropertyDelegate;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 public abstract class Machine {
-    public PropertyDelegate propertyDelegate;
-    
     public boolean hasContainer = false;
+    public int propertiesSize;
     public int invSize;
-    public String displayName;
     private BlockEntityType<?> blockEntityType;
 
     public Machine(boolean hasContainer){
@@ -27,20 +26,20 @@ public abstract class Machine {
         this.invSize = 0;
     }
 
-    public Machine(boolean hasContainer, int invSize){
+    public Machine(boolean hasContainer, int invSize, int propertiesSize){
         if (hasContainer){
             this.hasContainer = true;
             this.invSize = invSize;
-            this.propertyDelegate = this.initPropertyDelegate();
+            this.propertiesSize = propertiesSize;
         }
     }
 
     public abstract BlockEntityType<?> getType();
     
-    public static void tick(World world, BlockPos pos, BlockState state, BlockEntity blockEntity) {
+    public void tick(World world, BlockPos pos, BlockState state, BlockEntity blockEntity) {
     }
-    
-    public PropertyDelegate initPropertyDelegate(){
+
+    public VoxelShape getVoxelShape() {
         return null;
     }
 

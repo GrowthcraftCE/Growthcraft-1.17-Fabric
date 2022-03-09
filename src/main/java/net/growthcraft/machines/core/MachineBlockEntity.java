@@ -9,23 +9,26 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.screen.ArrayPropertyDelegate;
 import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class MachineBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
     public final Machine machine;
+    public ArrayPropertyDelegate propertyDelegate;
 
     private final DefaultedList<ItemStack> inventory;
 
     public MachineBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state, Machine machine) {
         super(type, pos, state);
         this.machine = machine;
+        propertyDelegate = new ArrayPropertyDelegate(machine.propertiesSize);
         this.inventory = DefaultedList.ofSize(machine.invSize, ItemStack.EMPTY);
     }
 
@@ -42,7 +45,7 @@ public class MachineBlockEntity extends BlockEntity implements NamedScreenHandle
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory inv, PlayerEntity player) {
-        return ((IContainerMachine)machine).getMenu(syncId,inv,player,this);
+        return ((IContainerMachine)machine).getMenu(syncId,inv,player,this,propertyDelegate);
     }
 
     @Override

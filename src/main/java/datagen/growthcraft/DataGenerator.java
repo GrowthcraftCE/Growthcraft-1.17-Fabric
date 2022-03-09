@@ -8,6 +8,7 @@ import net.growthcraft.blocks.BlockDef;
 import net.growthcraft.blocks.CheeseBlock;
 import net.growthcraft.blocks.CheeseDef;
 import net.growthcraft.blocks.GrowthcraftBlocks;
+import net.growthcraft.fluids.GrowthcraftFluids;
 import net.growthcraft.items.GrowthcraftItems;
 import net.growthcraft.items.WaxItem;
 import net.minecraft.block.Block;
@@ -24,6 +25,7 @@ import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.predicate.StatePredicate;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -223,6 +225,24 @@ public class DataGenerator {
 
 			}
 		});
+
+		// Fluids
+		GrowthcraftFluids.MOLTEN_WAXES.forEach(((dyeColor, fluidDef) -> {
+			modelStates.addModel(new Identifier(MOD_ID, "item/" + Registry.ITEM.getId(fluidDef.getBucket()).getPath()),()-> jsonParser.parse("{\n" +
+					"  \"parent\": \"item/generated\",\n" +
+					"  \"textures\": {\n" +
+					"    \"layer0\": \"growthcraft:item/bucket_base\"\n" +
+					"  }\n" +
+					"}"));
+		}));
+		GrowthcraftFluids.WORTS.forEach(((wortTypesPair, fluidDef) -> {
+			modelStates.addModel(new Identifier(MOD_ID, "item/" + Registry.ITEM.getId(fluidDef.getBucket()).getPath()),()-> jsonParser.parse("{\n" +
+					"  \"parent\": \"item/generated\",\n" +
+					"  \"textures\": {\n" +
+					"    \"layer0\": \"growthcraft:item/bucket_base\"\n" +
+					"  }\n" +
+					"}"));
+		}));
 
 		Arrays.stream(GrowthcraftBlocks.Cheeses.class.getDeclaredFields()).forEach(field -> {
 			String cheeseName = field.getName().toLowerCase(Locale.ROOT);

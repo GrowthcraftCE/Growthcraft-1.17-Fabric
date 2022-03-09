@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "growthcraft:item/chocolate_milk_bucket"
+    "layer0": "growthcraft:item/cream_bottle"
   }
 }

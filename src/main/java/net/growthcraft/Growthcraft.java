@@ -9,6 +9,7 @@ import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredica
 import net.fabricmc.fabric.impl.blockrenderlayer.BlockRenderLayerMapImpl;
 import net.growthcraft.blocks.CheeseBlock;
 import net.growthcraft.blocks.GrowthcraftBlocks;
+import net.growthcraft.fluids.GrowthcraftFluids;
 import net.growthcraft.items.GrowthcraftItems;
 import net.minecraft.client.item.UnclampedModelPredicateProvider;
 import net.minecraft.client.render.RenderLayer;
@@ -61,6 +62,7 @@ public class Growthcraft implements ModInitializer {
 		
 		GrowthcraftItems.register();
 		GrowthcraftBlocks.register();
+		GrowthcraftFluids.register();
 		
 		new DataGenerator().generate();
 

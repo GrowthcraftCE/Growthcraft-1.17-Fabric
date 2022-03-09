@@ -36,7 +36,7 @@ public class RoasterScreen extends HandledScreen<RoasterScreenHandler> {
         int l;
         if (((RoasterScreenHandler)this.handler).isRoasting()) {
             l = ((RoasterScreenHandler)this.handler).getRoastingProgress();
-            this.drawTexture(matrices, x + 81, y + 36 + 12 - l, 176, 42 - l, 14, l + 1);
+            this.drawTexture(matrices, x + 80, y + 36 + 12 - l, 176, 42 - l, 14, l + 1);
         }
     }
 

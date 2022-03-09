@@ -7,5 +7,5 @@ import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 
 public interface IContainerMachine {
-    ScreenHandler getMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player, Inventory inv);
+    ScreenHandler getMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player, Inventory inv, PropertyDelegate propertyDelegate);
 }
