@@ -4,7 +4,6 @@ import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityT
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.growthcraft.Growthcraft;
 import net.growthcraft.blocks.GrowthcraftBlocks;
-import net.growthcraft.machines.brew_kettle.BrewKettleBlockEntity;
 import net.growthcraft.machines.core.MachineBlockEntity;
 import net.growthcraft.machines.roaster.RoasterScreenHandler;
 import net.minecraft.block.entity.BlockEntityType;
@@ -29,10 +28,6 @@ public class GrowthcraftBlockEntities {
     public static BlockEntityType<MachineBlockEntity> ROASTER_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, Growthcraft.MOD_ID+":roaster", FabricBlockEntityTypeBuilder.create(
             (p,b)->new MachineBlockEntity(GrowthcraftBlockEntities.ROASTER_BLOCK_ENTITY,p,b,GrowthcraftBlocks.Custom.ROASTER.getMachine().get()),
             GrowthcraftBlocks.Custom.ROASTER.get()
-    ).build());
-    public static BlockEntityType<BrewKettleBlockEntity> BREW_KETTLE_BLOCK_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, Growthcraft.MOD_ID+":brew_kettle", FabricBlockEntityTypeBuilder.create(
-            (p,b)->new BrewKettleBlockEntity(GrowthcraftBlockEntities.BREW_KETTLE_BLOCK_ENTITY,p,b,GrowthcraftBlocks.Custom.BREW_KETTLE.getMachine().get()),
-            GrowthcraftBlocks.Custom.BREW_KETTLE.get()
     ).build());
 
     public static final ScreenHandlerType<RoasterScreenHandler> BOX_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(new Identifier(Growthcraft.MOD_ID+":roaster"), RoasterScreenHandler::new);

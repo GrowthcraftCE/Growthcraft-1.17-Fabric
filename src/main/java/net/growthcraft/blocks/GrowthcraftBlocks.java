@@ -1,16 +1,13 @@
 package net.growthcraft.blocks;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.loader.util.sat4j.core.ConstrGroup;
 import net.growthcraft.Growthcraft;
 import net.growthcraft.IgnoreDatagen;
-import net.growthcraft.entity.GrowthcraftBlockEntities;
-import net.growthcraft.machines.brew_kettle.BrewKettleMachine;
 import net.growthcraft.machines.core.Machine;
 import net.growthcraft.machines.roaster.RoasterMachine;
+import net.growthcraft.machines.wort_cauldron.WortCauldronBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.ChorusPlantBlock;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.FoodComponent;
@@ -38,7 +35,7 @@ public class GrowthcraftBlocks {
 
         public static final BlockDef ROASTER = registerBlock("roaster", new RoasterMachine());
 
-        @IgnoreDatagen public static final BlockDef BREW_KETTLE = registerBlock("brew_kettle",new BrewKettleMachine());
+        @IgnoreDatagen public static final BlockDef BREW_KETTLE = registerBlock("brew_kettle",new WortCauldronBlock());
     }
 
     public static class Singleton{

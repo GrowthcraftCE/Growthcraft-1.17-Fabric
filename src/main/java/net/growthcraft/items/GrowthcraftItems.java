@@ -107,7 +107,9 @@ public class GrowthcraftItems {
         return milks;
     }
     
-    public static void register(){}
+    public static void register(){
+        Singleton.DARK_ROASTED_GRAIN.asItem(); // force initialize
+    }
     
     public static Item registerItem(Item item,String id) {
         if (GrowthcraftConstants.isGameRunning)
