@@ -68,7 +68,7 @@ public class Growthcraft implements ModInitializer {
 
 		GrowthcraftItems.grains.forEach((grainType, item) -> {
 			CauldronBehavior.WATER_CAULDRON_BEHAVIOR.put(item, (state, world, pos, player, hand, stack) -> {
-				world.setBlockState(pos,GrowthcraftBlocks.Custom.BREW_KETTLE.getDefault()); // type
+				world.setBlockState(pos,GrowthcraftBlocks.Custom.WORT_CAULDRON.getDefault()); // type
 				return ActionResult.SUCCESS;
 			});
 		});

@@ -8,15 +8,23 @@ import net.growthcraft.blocks.GrowthcraftBlocks;
 import net.growthcraft.fluids.GrowthcraftFluids;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.*;
+import net.minecraft.text.Style;
+import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.DyeColor;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.SimpleRegistry;
+import net.minecraft.world.World;
 import org.apache.commons.lang3.tuple.Triple;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 import static net.growthcraft.Growthcraft.MOD_ID;
@@ -35,6 +43,14 @@ public class GrowthcraftItems {
         public static final Item RICE = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP)), "rice");
         public static final Item RICE_FLOUR = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP)), "rice_flour");
         public static final Item GRAIN = registerItem(new Item(new Item.Settings().group(Growthcraft.ITEMGROUP)), "grain");
+
+        public static final Item BREW_KETTLE = registerItem(new Item(new Item.Settings()){
+            @Override
+            public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+                tooltip.add(new TranslatableText("tooltip.growthcraft.brew_kettle").setStyle(Style.EMPTY.withColor(Formatting.RED)));
+                super.appendTooltip(stack, world, tooltip, context);
+            }
+        }, "brew_kettle");
 
         public static final Item PALE_GOLDEN_ROASTED_GRAIN = registerItem(new GrainItem(GrowthcraftFluids.GrainTypes.PALE_GOLDEN,new Item.Settings().group(Growthcraft.ITEMGROUP)), "pale_golden_roasted_grain");
         public static final Item GOLDEN_ROASTED_GRAIN = registerItem(new GrainItem(GrowthcraftFluids.GrainTypes.GOLDEN,new Item.Settings().group(Growthcraft.ITEMGROUP)), "golden_roasted_grain");

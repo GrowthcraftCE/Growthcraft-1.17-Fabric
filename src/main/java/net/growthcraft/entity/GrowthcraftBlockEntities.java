@@ -6,6 +6,7 @@ import net.growthcraft.Growthcraft;
 import net.growthcraft.blocks.GrowthcraftBlocks;
 import net.growthcraft.machines.core.MachineBlockEntity;
 import net.growthcraft.machines.roaster.RoasterScreenHandler;
+import net.growthcraft.machines.wort_cauldron.WortCauldronBlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.util.Identifier;
@@ -29,6 +30,10 @@ public class GrowthcraftBlockEntities {
             (p,b)->new MachineBlockEntity(GrowthcraftBlockEntities.ROASTER_BLOCK_ENTITY,p,b,GrowthcraftBlocks.Custom.ROASTER.getMachine().get()),
             GrowthcraftBlocks.Custom.ROASTER.get()
     ).build());
+    public static BlockEntityType<WortCauldronBlockEntity> WORT_CAULDRON_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, Growthcraft.MOD_ID+":wort_cauldron", FabricBlockEntityTypeBuilder.create(
+            WortCauldronBlockEntity::new,
+            GrowthcraftBlocks.Custom.WORT_CAULDRON.get()
+    ).build());
 
-    public static final ScreenHandlerType<RoasterScreenHandler> BOX_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(new Identifier(Growthcraft.MOD_ID+":roaster"), RoasterScreenHandler::new);
+    public static final ScreenHandlerType<RoasterScreenHandler> ROASTER_SCREEN_HANDLER = ScreenHandlerRegistry.registerSimple(new Identifier(Growthcraft.MOD_ID+":roaster"), RoasterScreenHandler::new);
 }

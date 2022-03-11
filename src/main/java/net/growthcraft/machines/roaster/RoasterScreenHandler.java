@@ -25,7 +25,7 @@ public class RoasterScreenHandler extends ScreenHandler {
     //This constructor gets called from the BlockEntity on the server without calling the other constructor first, the server knows the inventory of the container
     //and can therefore directly provide it as an argument. This inventory will then be synced to the client.
     public RoasterScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory, PropertyDelegate propertyDelegate) {
-        super(GrowthcraftBlockEntities.BOX_SCREEN_HANDLER, syncId);
+        super(GrowthcraftBlockEntities.ROASTER_SCREEN_HANDLER, syncId);
         checkSize(inventory, 3);
         checkDataCount(propertyDelegate,2);
         this.inventory = inventory;

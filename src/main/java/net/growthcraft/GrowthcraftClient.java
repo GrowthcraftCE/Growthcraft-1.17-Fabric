@@ -11,7 +11,7 @@ import net.minecraft.client.render.RenderLayer;
 public class GrowthcraftClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        ScreenRegistry.register(GrowthcraftBlockEntities.BOX_SCREEN_HANDLER, RoasterScreen::new);
+        ScreenRegistry.register(GrowthcraftBlockEntities.ROASTER_SCREEN_HANDLER, RoasterScreen::new);
 
         BlockRenderLayerMapImpl.INSTANCE.putBlock(GrowthcraftBlocks.Custom.GRAPE_LEAVES.get(), RenderLayer.getCutout());
     }

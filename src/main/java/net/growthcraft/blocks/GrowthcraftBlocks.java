@@ -35,7 +35,7 @@ public class GrowthcraftBlocks {
 
         public static final BlockDef ROASTER = registerBlock("roaster", new RoasterMachine());
 
-        @IgnoreDatagen public static final BlockDef BREW_KETTLE = registerBlock("brew_kettle",new WortCauldronBlock());
+        @IgnoreDatagen public static final BlockDef WORT_CAULDRON = registerBlock("wort_cauldron",new WortCauldronBlock(),false);
     }
 
     public static class Singleton{
